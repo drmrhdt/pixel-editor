@@ -1,1 +1,1 @@
-# pixel-editor
+# editor
