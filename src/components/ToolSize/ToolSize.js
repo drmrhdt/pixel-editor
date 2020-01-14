@@ -4,7 +4,6 @@ import { selectSize } from "../../store/actions/selectSize";
 
 export default function ToolSize() {
   const size = useSelector(state => state.selectSize.toolSize);
-  console.log(typeof size);
   const dispatch = useDispatch();
 
   const pickSize = e => {

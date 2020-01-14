@@ -5,6 +5,7 @@ import "./Canvas.css";
 export default function Canvas() {
   const color = useSelector(state => state.colorSelect.color);
   const size = useSelector(state => state.selectSize.toolSize);
+  const lineJoin = useSelector(state => state.selectLineJoin.lineJoin);
 
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
@@ -40,7 +41,7 @@ export default function Canvas() {
 
       if (context) {
         context.strokeStyle = color;
-        context.lineJoin = "round";
+        context.lineJoin = lineJoin;
         context.lineWidth = size;
 
         context.beginPath();
@@ -50,7 +51,7 @@ export default function Canvas() {
         context.stroke();
       }
     },
-    [color, size]
+    [color, lineJoin, size]
   );
 
   useEffect(() => {
