@@ -3,11 +3,11 @@ import ColorPicker from "../ColorPicker";
 import ToolSize from "../ToolSize";
 import ToolLineJoin from "../ToolLineJoin";
 import ToolLine from "../ToolLine";
-import "./Toolbox.css";
+import styles from "./Toolbox.module.scss";
 
 export default function Toolbox() {
   return (
-    <div className="toolbox">
+    <div className={styles.toolbox}>
       <ColorPicker colorParameter="strokeStyle" />
       <ColorPicker colorParameter="fillStyle" />
       <ToolSize />

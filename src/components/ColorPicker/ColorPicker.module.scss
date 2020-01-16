@@ -1,0 +1,9 @@
+.pickColor {
+  display: block;
+  width: 20px;
+  height: 20px;
+
+  &__input {
+    display: none;
+  }
+}

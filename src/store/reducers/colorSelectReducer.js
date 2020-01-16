@@ -1,6 +1,6 @@
 const initialState = {
   strokeStyle: "#000000",
-  fillStyle: "#ffffff"
+  fillStyle: "#000000"
 };
 
 export const colorSelectReducer = (state = initialState, action) => {
