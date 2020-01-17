@@ -38,7 +38,7 @@ export default function ColorPicker(props) {
       <label
         className={classNames(styles.pickColor)}
         style={style}
-        for={colorParameter}
+        htmlFor={colorParameter}
       />
       <input
         className={styles.pickColor__input}

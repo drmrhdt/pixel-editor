@@ -1,11 +1,11 @@
 import React from "react";
 import Canvas from "./components/Canvas";
 import Toolbox from "./components/Toolbox";
-import "./App.css";
+import styles from "./App.module.scss";
 
 function App() {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <Canvas />
       <Toolbox />
     </div>

@@ -1,5 +1,11 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
+import {
+  drawCircle,
+  drawBrush,
+  drawRectangle,
+  drawSquare
+} from "../../utilities/drawFigures";
 import "./Canvas.css";
 
 export default function Canvas() {
@@ -8,6 +14,7 @@ export default function Canvas() {
   const size = useSelector(state => state.selectSize.toolSize);
   const lineJoin = useSelector(state => state.selectLineJoin.lineJoin);
   const tool = useSelector(state => state.selectTool.tool);
+  const figure = useSelector(state => state.selectFigure.figure);
 
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
@@ -41,35 +48,35 @@ export default function Canvas() {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
 
-      if (context) {
-        // context.strokeStyle = strokeStyle;
-        // context.lineJoin = lineJoin;
-        // context.lineWidth = size;
+      //   context.shadowColor = fillStyle;
+      //   context.shadowBlur = 6;
+      //   context.shadowOffsetX = 6;
+      //   context.shadowOffsetY = 6;
+      context.fillStyle = fillStyle;
+      context.lineWidth = size;
+      context.strokeStyle = strokeStyle;
 
-        // context.beginPath();
-        // context.moveTo(originalMousePosition.x, originalMousePosition.y);
-        // context.lineTo(newMousePosition.x, newMousePosition.y);
-        // context.closePath();
-        // context.stroke();
+      if (context) {
+        // drawBrush(originalMousePosition, newMousePosition, context);
 
         // context.clearRect(0, 0, canvas.width, canvas.height); // clearing before draw new circle
 
-        const centerX = originalMousePosition.x;
-        const centerY = originalMousePosition.y;
-
-        const radius =
-          size + Math.abs(originalMousePosition.y - newMousePosition.y);
-
-        context.beginPath();
-        context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-        context.fillStyle = fillStyle;
-        context.fill();
-        context.lineWidth = 5;
-        context.strokeStyle = strokeStyle;
-        context.stroke();
+        switch (figure) {
+          case "circle":
+            drawCircle(originalMousePosition, newMousePosition, size, context);
+            break;
+          case "rectangle":
+            drawRectangle(originalMousePosition, newMousePosition, context);
+            break;
+          case "square":
+            drawSquare(originalMousePosition, newMousePosition, context);
+            break;
+          default:
+            return;
+        }
       }
     },
-    [size, fillStyle, strokeStyle]
+    [figure, fillStyle, size, strokeStyle]
   );
 
   useEffect(() => {
@@ -90,7 +97,7 @@ export default function Canvas() {
         if (mousePosition && newMousePosition) {
           drawLine(mousePosition, newMousePosition);
           // draw circle always on the new place
-          setMousePosition(newMousePosition);
+          // setMousePosition(newMousePosition);
         }
       }
     },
@@ -126,6 +133,11 @@ export default function Canvas() {
   }, [stopPaint]);
 
   return (
-    <canvas className="canvas" ref={canvasRef} width="1300px" height="600px" />
+    <canvas
+      className="canvas"
+      ref={canvasRef}
+      width={window.innerWidth}
+      height={window.innerHeight - 100}
+    />
   );
 }

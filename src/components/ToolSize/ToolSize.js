@@ -10,5 +10,5 @@ export default function ToolSize() {
     dispatch(selectSize(parseInt(e.target.value)));
   };
 
-  return <input type="range" value={size} onChange={pickSize} />;
+  return <input type="range" value={size} max="15" onChange={pickSize} />;
 }
