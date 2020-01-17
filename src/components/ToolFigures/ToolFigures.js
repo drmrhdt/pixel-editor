@@ -1,9 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { selectFigure } from "../../store/actions/selectFigure";
 
 export default function ToolFigures() {
-  const figure = useSelector(state => state.selectFigure.figure);
   const dispatch = useDispatch();
 
   let pickFigure = e => {
@@ -18,16 +17,20 @@ export default function ToolFigures() {
     // </select>
     <>
       <label onChange={pickFigure}>
-        <input type="radio" value="square" />
+        <input type="radio" name="figure" value="square" />
         square
       </label>
       <label onChange={pickFigure}>
-        <input type="radio" value="rectangle" />
+        <input type="radio" name="figure" value="rectangle" />
         rectangle
       </label>
       <label onChange={pickFigure}>
-        <input type="radio" value="circle" />
+        <input type="radio" name="figure" value="circle" />
         circle
+      </label>
+      <label onChange={pickFigure}>
+        <input type="radio" name="figure" value="line" />
+        line
       </label>
     </>
   );

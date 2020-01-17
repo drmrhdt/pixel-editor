@@ -19,6 +19,11 @@ export const selectFigureReducer = (state = initialState, action) => {
         ...state,
         figure: "triangle"
       };
+    case "SELECT_LINE_TOOL":
+      return {
+        ...state,
+        figure: "line"
+      };
     default:
       return state;
   }

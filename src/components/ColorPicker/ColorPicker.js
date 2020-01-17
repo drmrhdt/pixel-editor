@@ -28,10 +28,20 @@ export default function ColorPicker(props) {
       pickColor = null;
   }
 
-  const style =
-    colorParameter === "strokeStyle"
-      ? { border: `2px solid ${color}` }
-      : { backgroundColor: color, border: `2px solid ${color}` };
+  let style;
+  switch (colorParameter) {
+    case "strokeStyle":
+      style = { border: `2px solid ${color}` };
+      break;
+    case "fillStyle":
+      style = { backgroundColor: color, border: `2px solid ${color}` };
+      break;
+    case "shadowColor":
+      style = { backgroundColor: color, border: `2px solid ${color}` };
+      break;
+    default:
+      style = {};
+  }
 
   return (
     <>

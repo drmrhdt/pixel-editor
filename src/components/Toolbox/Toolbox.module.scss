@@ -1,8 +1,8 @@
 .toolbox {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  width: 50%;
-  margin-top: 10px;
+  box-sizing: border-box;
   padding: 10px;
 
   background-color: #ffffff;

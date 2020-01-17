@@ -7,7 +7,10 @@ function App() {
   return (
     <div className={styles.app}>
       <Canvas />
-      <Toolbox />
+      <div className={styles.app__box}>
+        <h1 className={styles.app__title}>Zen Drawing App</h1>
+        <Toolbox className={styles.app__toolbox} />
+      </div>
     </div>
   );
 }

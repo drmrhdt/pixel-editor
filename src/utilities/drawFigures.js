@@ -57,7 +57,7 @@ export const drawRectangle = (
   context.stroke();
 };
 
-export const drawBrush = (originalMousePosition, newMousePosition, context) => {
+export const drawLine = (originalMousePosition, newMousePosition, context) => {
   context.beginPath();
   context.moveTo(originalMousePosition.x, originalMousePosition.y);
   context.lineTo(newMousePosition.x, newMousePosition.y);
