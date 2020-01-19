@@ -4,7 +4,7 @@ const initialState = {
   shadowColor: "#dddddd"
 };
 
-export const colorSelectReducer = (state = initialState, action) => {
+export const selectColorReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SELECT_STROKE_STYLE":
       return {

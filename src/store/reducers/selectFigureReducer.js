@@ -14,10 +14,10 @@ export const selectFigureReducer = (state = initialState, action) => {
         ...state,
         figure: "square"
       };
-    case "SELECT_TRIANGLE_TOOL":
+    case "SELECT_RECTANGLE_TOOL":
       return {
         ...state,
-        figure: "triangle"
+        figure: "rectangle"
       };
     case "SELECT_LINE_TOOL":
       return {

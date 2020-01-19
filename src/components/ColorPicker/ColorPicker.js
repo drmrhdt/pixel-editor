@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames";
 import {
   selectFillStyle,
-  selectStrokeStyle
+  selectStrokeStyle,
+  selectShadowColor
 } from "../../store/actions/selectColor";
 import styles from "./ColorPicker.module.scss";
 
@@ -22,6 +23,11 @@ export default function ColorPicker(props) {
     case "fillStyle":
       pickColor = e => {
         dispatch(selectFillStyle(e.target.value));
+      };
+      break;
+    case "shadowColor":
+      pickColor = e => {
+        dispatch(selectShadowColor(e.target.value));
       };
       break;
     default:

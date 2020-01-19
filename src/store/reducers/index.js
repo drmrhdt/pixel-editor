@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { colorSelectReducer } from "./colorSelectReducer";
+import { selectColorReducer } from "./selectColorReducer";
 import { selectSizeReducer } from "./selectSizeReducer";
 import { selectLineJoinReducer } from "./selectLineJoinReducer";
 import { selectToolReducer } from "./selectToolReducer";
@@ -8,7 +8,7 @@ import { selectPatternReducer } from "./selectPatternReducer";
 import { selectShadowParameterReducer } from "./selectShadowParameterReducer";
 
 export const rootReducer = combineReducers({
-  colorSelect: colorSelectReducer,
+  colorSelect: selectColorReducer,
   selectSize: selectSizeReducer,
   selectLineJoin: selectLineJoinReducer,
   selectTool: selectToolReducer,

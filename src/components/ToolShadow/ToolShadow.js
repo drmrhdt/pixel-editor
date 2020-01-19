@@ -32,6 +32,7 @@ export default function ToolShadow() {
         shadow blur
         <input
           type="range"
+          min="-15"
           max="15"
           value={shadowBlur}
           onChange={pickShadowBlur}
@@ -41,6 +42,7 @@ export default function ToolShadow() {
         shadow offset x
         <input
           type="range"
+          min="-15"
           max="15"
           value={shadowOffsetX}
           onChange={pickShadowOffsetX}
@@ -50,6 +52,7 @@ export default function ToolShadow() {
         shadow offset y
         <input
           type="range"
+          min="-15"
           max="15"
           value={shadowOffsetY}
           onChange={pickShadowOffsetY}
