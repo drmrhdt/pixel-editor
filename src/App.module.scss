@@ -1,8 +1,6 @@
 .app {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  // height: 100vh;
+  // flex-direction: column;
 
   background-color: #dddddd;
 
@@ -12,16 +10,15 @@
 
   &__box {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     box-sizing: border-box;
     width: 100%;
     padding: 10px;
   }
 
   &__title {
-    width: 25%;
+    margin-top: 0;
 
-    text-align: center;
+    font-size: 50px;
   }
 }

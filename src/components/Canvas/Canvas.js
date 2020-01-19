@@ -156,8 +156,8 @@ export default function Canvas() {
     <canvas
       className={styles.canvas}
       ref={canvasRef}
-      width={document.documentElement.clientWidth}
-      height={document.documentElement.clientHeight - 100}
+      width={document.documentElement.clientWidth - 300}
+      height={document.documentElement.clientHeight}
     />
   );
 }
