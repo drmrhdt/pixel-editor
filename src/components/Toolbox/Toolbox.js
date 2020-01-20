@@ -7,6 +7,7 @@ import ToolLine from "../ToolLine";
 import ToolFigures from "../ToolFigures";
 import ToolPattern from "../ToolPattern";
 import ToolShadow from "../ToolShadow";
+import ToolOpacity from "../ToolOpacity";
 import styles from "./Toolbox.module.scss";
 
 export default function Toolbox(props) {
@@ -25,8 +26,8 @@ export default function Toolbox(props) {
       <h3 className={styles.toolbox__title}>Background</h3>
       <ColorPicker colorParameter="fillStyle" />
       <h3 className={styles.toolbox__title}>Shadow</h3>
-      <ToolShadow className={styles["toolbox__tool-group_layout_column"]} />
-
+      <ToolShadow className={styles["toolbox__tool-group_layout_row"]} />
+      <ToolOpacity className={styles["toolbox__tool-group_layout_row"]} />
       {/* <ToolLineJoin /> */}
     </div>
   );

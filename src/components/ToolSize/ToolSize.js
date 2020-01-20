@@ -14,7 +14,13 @@ export default function ToolSize() {
   return (
     <label className={styles["tool-size"]}>
       <span>size</span>
-      <input type="range" value={size} max="15" onChange={pickSize} />
+      <input
+        className={styles["tool-size__input"]}
+        type="number"
+        value={size}
+        max="15"
+        onChange={pickSize}
+      />
     </label>
   );
 }

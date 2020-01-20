@@ -44,7 +44,7 @@ export default function ColorPicker(props) {
       <input
         className={styles["color-picker__input"]}
         type="color"
-        value={{ backgroundColor: color }}
+        value={{ color }}
         onChange={pickColor}
         id={colorParameter}
       />

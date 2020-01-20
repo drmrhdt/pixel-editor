@@ -3,9 +3,14 @@
     margin-bottom: 10px;
   }
 
-  &__tool {
+  &__label {
     display: flex;
 
     vertical-align: middle;
+  }
+
+  &__input {
+    width: 30px;
+    height: 25px;
   }
 }

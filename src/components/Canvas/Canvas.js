@@ -23,6 +23,7 @@ export default function Canvas(props) {
   const tool = useSelector(state => state.selectTool.tool);
   const figure = useSelector(state => state.selectFigure.figure);
   const pattern = useSelector(state => state.selectPattern.pattern);
+  const opacity = useSelector(state => state.selectOpacity.opacity);
 
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
@@ -63,6 +64,7 @@ export default function Canvas(props) {
       context.fillStyle = fillStyle;
       context.lineWidth = size;
       context.strokeStyle = strokeStyle;
+      context.globalAlpha = opacity;
 
       if (context) {
         // drawLine(originalMousePosition, newMousePosition, context);
@@ -90,6 +92,7 @@ export default function Canvas(props) {
     [
       figure,
       fillStyle,
+      opacity,
       shadowBlur,
       shadowColor,
       shadowOffsetX,
