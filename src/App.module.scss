@@ -1,6 +1,8 @@
 .app {
   display: flex;
 
+  color: #c4c4c4;
+
   background-color: #292b2c;
 
   &__box {
@@ -17,7 +19,6 @@
 
     font-size: 44px;
     color: #e7e3e3;
-    color: #c4c4c4;
   }
 
   &__buttons-group {
