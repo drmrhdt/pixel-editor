@@ -4,13 +4,31 @@
   }
 
   &__label {
+    position: relative;
+
     display: flex;
 
     vertical-align: middle;
   }
 
+  &__label::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    display: block;
+    width: 40px;
+    height: 100px;
+
+    font-size: 10px;
+    color: #c4c4c4;
+  }
+
   &__input {
-    width: 30px;
-    height: 25px;
+    box-sizing: border-box;
+    width: 40px;
+    height: 30px;
+    padding: 5px;
   }
 }

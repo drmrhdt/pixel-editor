@@ -31,8 +31,7 @@ export default function ToolShadow(props) {
   return (
     <div className={classNames(styles["tool-shadow"], className)}>
       <ColorPicker colorParameter="shadowColor" />
-      <label className={styles["tool-shadow__label"]}>
-        blur
+      <label className={styles["tool-shadow__label"]} data-label="blur">
         <input
           className={styles["tool-shadow__input"]}
           type="number"
@@ -42,8 +41,7 @@ export default function ToolShadow(props) {
           onChange={pickShadowBlur}
         />
       </label>
-      <label className={styles["tool-shadow__label"]}>
-        offset x
+      <label className={styles["tool-shadow__label"]} data-label="offset x">
         <input
           className={styles["tool-shadow__input"]}
           type="number"
@@ -53,8 +51,7 @@ export default function ToolShadow(props) {
           onChange={pickShadowOffsetX}
         />
       </label>
-      <label className={styles["tool-shadow__label"]}>
-        offset y
+      <label className={styles["tool-shadow__label"]} data-label="offset y">
         <input
           className={styles["tool-shadow__input"]}
           type="number"

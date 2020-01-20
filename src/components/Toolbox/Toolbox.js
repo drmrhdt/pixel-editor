@@ -27,6 +27,7 @@ export default function Toolbox(props) {
       <ColorPicker colorParameter="fillStyle" />
       <h3 className={styles.toolbox__title}>Shadow</h3>
       <ToolShadow className={styles["toolbox__tool-group_layout_row"]} />
+      <h3 className={styles.toolbox__title}>Opacity</h3>
       <ToolOpacity className={styles["toolbox__tool-group_layout_row"]} />
       {/* <ToolLineJoin /> */}
     </div>

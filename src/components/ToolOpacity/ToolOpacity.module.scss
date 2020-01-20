@@ -2,7 +2,9 @@
   vertical-align: middle;
 
   &__input_type_number {
-    width: 30px;
-    height: 25px;
+    box-sizing: border-box;
+    width: 40px;
+    height: 30px;
+    padding: 5px;
   }
 }
