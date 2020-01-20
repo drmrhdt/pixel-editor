@@ -1,7 +1,13 @@
-.pickColor {
-  display: block;
-  width: 20px;
-  height: 20px;
+.color-picker {
+  &__label {
+    display: block;
+    box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+
+    border: 3px solid #4d4d4e;
+  }
 
   &__input {
     display: none;

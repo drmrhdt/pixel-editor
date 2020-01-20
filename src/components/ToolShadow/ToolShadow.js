@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import ColorPicker from "../ColorPicker";
 import {
@@ -6,8 +7,10 @@ import {
   selectShadowOffsetX,
   selectShadowOffsetY
 } from "../../store/actions/selectToolShadowParameter";
+import styles from "./ToolShadow.module.scss";
 
-export default function ToolShadow() {
+export default function ToolShadow(props) {
+  const { className } = props;
   const { shadowBlur, shadowOffsetX, shadowOffsetY } = useSelector(
     state => state.selectShadowParameter
   );
@@ -26,10 +29,10 @@ export default function ToolShadow() {
   };
 
   return (
-    <div>
+    <div className={classNames(styles["tool-shadow"], className)}>
       <ColorPicker colorParameter="shadowColor" />
-      <label>
-        shadow blur
+      <label className={styles["tool-shadow__tool"]}>
+        blur
         <input
           type="range"
           min="-15"
@@ -38,8 +41,8 @@ export default function ToolShadow() {
           onChange={pickShadowBlur}
         />
       </label>
-      <label>
-        shadow offset x
+      <label className={styles["tool-shadow__tool"]}>
+        offset x
         <input
           type="range"
           min="-15"
@@ -48,8 +51,8 @@ export default function ToolShadow() {
           onChange={pickShadowOffsetX}
         />
       </label>
-      <label>
-        shadow offset y
+      <label className={styles["tool-shadow__tool"]}>
+        offset y
         <input
           type="range"
           min="-15"

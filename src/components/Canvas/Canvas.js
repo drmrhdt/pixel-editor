@@ -8,7 +8,9 @@ import {
 } from "../../utilities/drawFigures";
 import styles from "./Canvas.module.scss";
 
-export default function Canvas() {
+export default function Canvas(props) {
+  const { setCanvasRef } = props;
+
   const { strokeStyle, fillStyle, shadowColor } = useSelector(
     state => state.colorSelect
   );
@@ -101,12 +103,14 @@ export default function Canvas() {
     if (!canvasRef.current) {
       return;
     }
+    setCanvasRef(canvasRef);
+
     const canvas = canvasRef.current;
     canvas.addEventListener("mousedown", startPaint);
     return () => {
       canvas.removeEventListener("mousedown", startPaint);
     };
-  }, [startPaint]);
+  }, [setCanvasRef, startPaint]);
 
   const paint = useCallback(
     e => {
@@ -154,6 +158,7 @@ export default function Canvas() {
 
   return (
     <canvas
+      id="canvas"
       className={styles.canvas}
       ref={canvasRef}
       width={document.documentElement.clientWidth - 300}

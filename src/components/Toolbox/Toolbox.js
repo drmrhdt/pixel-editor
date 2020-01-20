@@ -13,12 +13,20 @@ export default function Toolbox(props) {
   const { className } = props;
   return (
     <div className={classNames(styles.toolbox, className)}>
-      <ColorPicker colorParameter="strokeStyle" />
+      <h3 className={styles.toolbox__title}>Figure</h3>
+      <ToolFigures className={styles["toolbox__tool-group_layout_row"]} />
+      <h3 className={styles.toolbox__title}>Pattern</h3>
+      <ToolPattern className={styles["toolbox__tool-group_layout_row"]} />
+      <h3 className={styles.toolbox__title}>Border</h3>
+      <div className={styles["toolbox__tool-group_layout_row"]}>
+        <ColorPicker colorParameter="strokeStyle" />
+        <ToolSize />
+      </div>
+      <h3 className={styles.toolbox__title}>Background</h3>
       <ColorPicker colorParameter="fillStyle" />
-      <ToolFigures />
-      <ToolPattern />
-      <ToolShadow />
-      <ToolSize />
+      <h3 className={styles.toolbox__title}>Shadow</h3>
+      <ToolShadow className={styles["toolbox__tool-group_layout_column"]} />
+
       {/* <ToolLineJoin /> */}
     </div>
   );

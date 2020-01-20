@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSize } from "../../store/actions/selectSize";
+import styles from "./ToolSize.module.scss";
 
 export default function ToolSize() {
   const size = useSelector(state => state.selectSize.toolSize);
@@ -11,8 +12,8 @@ export default function ToolSize() {
   };
 
   return (
-    <label>
-      size
+    <label className={styles["tool-size"]}>
+      <span>size</span>
       <input type="range" value={size} max="15" onChange={pickSize} />
     </label>
   );

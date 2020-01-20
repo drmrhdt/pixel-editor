@@ -1,0 +1,11 @@
+.tool-shadow {
+  & > :nth-child(n) {
+    margin-bottom: 10px;
+  }
+
+  &__tool {
+    display: flex;
+
+    vertical-align: middle;
+  }
+}

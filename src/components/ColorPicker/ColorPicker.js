@@ -34,35 +34,20 @@ export default function ColorPicker(props) {
       pickColor = null;
   }
 
-  let style;
-  switch (colorParameter) {
-    case "strokeStyle":
-      style = { border: `2px solid ${color}` };
-      break;
-    case "fillStyle":
-      style = { backgroundColor: color, border: `2px solid ${color}` };
-      break;
-    case "shadowColor":
-      style = { backgroundColor: color, border: `2px solid ${color}` };
-      break;
-    default:
-      style = {};
-  }
-
   return (
-    <>
+    <div className={(classNames(classNames), styles["color-picker"])}>
       <label
-        className={classNames(styles.pickColor)}
-        style={style}
+        className={styles["color-picker__label"]}
+        style={{ backgroundColor: color }}
         htmlFor={colorParameter}
       />
       <input
-        className={styles.pickColor__input}
+        className={styles["color-picker__input"]}
         type="color"
-        value={color}
+        value={{ backgroundColor: color }}
         onChange={pickColor}
         id={colorParameter}
       />
-    </>
+    </div>
   );
 }

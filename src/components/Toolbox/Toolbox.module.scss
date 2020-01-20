@@ -1,9 +1,28 @@
 .toolbox {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
 
-  background-color: #ffffff;
+  background-color: #e7e3e3;
+  background-color: #292b2c;
+
+  &__tool-group_layout_row {
+    display: flex;
+  }
+
+  &__tool-group_layout_column {
+    flex-direction: column;
+
+    @extend .toolbox__tool-group_layout_row;
+  }
+
+  &__title {
+    margin: 15px 0 5px 0;
+
+    font-size: 18px;
+    color: #c4c4c4;
+  }
 }

@@ -1,12 +1,7 @@
 .app {
   display: flex;
-  // flex-direction: column;
 
-  background-color: #dddddd;
-
-  &__toolbox {
-    width: 75%;
-  }
+  background-color: #292b2c;
 
   &__box {
     display: flex;
@@ -17,8 +12,30 @@
   }
 
   &__title {
-    margin-top: 0;
+    width: 70%;
+    margin: 0;
 
-    font-size: 50px;
+    font-size: 44px;
+    color: #e7e3e3;
+    color: #c4c4c4;
+  }
+
+  &__buttons-group {
+    display: flex;
+
+    &:first-child {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__button-save-to-galery,
+  &__button-download {
+    border: 1px solid #292b2c;
+  }
+
+  &__link {
+    vertical-align: middle;
+    color: #000000;
+    text-decoration: none;
   }
 }
