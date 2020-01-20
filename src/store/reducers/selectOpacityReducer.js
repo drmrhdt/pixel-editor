@@ -1,5 +1,5 @@
 const initialState = {
-  opacity: 0
+  opacity: 1
 };
 
 export const selectOpacityReducer = (state = initialState, action) => {
