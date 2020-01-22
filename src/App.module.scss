@@ -1,14 +1,13 @@
+@import "./styles/variables.scss";
+
 .temp {
-  background-color: #292b2c;
+  background-color: $bg-color;
 }
 
 .app {
   display: flex;
 
-  color: #c4c4c4;
-
-  background-color: #292b2c;
-  // #434647
+  background-color: $bg-color;
 
   &__box {
     display: flex;
@@ -22,8 +21,8 @@
     width: 70%;
     margin: 0;
 
-    font-size: 44px;
-    color: #e7e3e3;
+    font-size: $logo-font-size;
+    color: $title-color;
   }
 
   &__buttons-group {
@@ -36,12 +35,12 @@
 
   &__button-save-to-galery,
   &__button-download {
-    border: 1px solid #292b2c;
+    border: 1px solid $bg-color;
   }
 
   &__link {
     vertical-align: middle;
-    color: #000000;
+    color: $black;
     text-decoration: none;
   }
 }

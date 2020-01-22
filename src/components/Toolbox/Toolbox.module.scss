@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .toolbox {
   display: flex;
   flex-direction: column;
@@ -6,8 +8,7 @@
   box-sizing: border-box;
   padding: 10px 10px 10px 0;
 
-  background-color: #e7e3e3;
-  background-color: #292b2c;
+  background-color: $bg-color;
 
   &__tool-group_layout_row {
     display: flex;
@@ -23,7 +24,7 @@
   &__title {
     margin: 15px 0 5px 0;
 
-    font-size: 18px;
-    color: #e7e3e3;
+    font-size: $toolbox-title-font-size;
+    color: $text-color;
   }
 }
