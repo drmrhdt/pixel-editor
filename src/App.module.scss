@@ -1,9 +1,14 @@
+.temp {
+  background-color: #292b2c;
+}
+
 .app {
   display: flex;
 
   color: #c4c4c4;
 
   background-color: #292b2c;
+  // #434647
 
   &__box {
     display: flex;
