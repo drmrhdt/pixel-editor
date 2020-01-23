@@ -19,8 +19,9 @@ export default function Canvas(props) {
   );
 
   const size = useSelector(state => state.selectSize.toolSize);
-  const lineJoin = useSelector(state => state.selectLineJoin.lineJoin);
-  const tool = useSelector(state => state.selectTool.tool);
+  // TO-DO add these instruments
+  // const lineJoin = useSelector(state => state.selectLineJoin.lineJoin);
+  // const tool = useSelector(state => state.selectTool.tool);
   const figure = useSelector(state => state.selectFigure.figure);
   const pattern = useSelector(state => state.selectPattern.pattern);
   const opacity = useSelector(state => state.selectOpacity.opacity);
@@ -28,6 +29,11 @@ export default function Canvas(props) {
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
   const canvasRef = useRef(null);
+
+  // TO-DO make canvas background-color WHITE
+  // context.fillStyle = "#ffffff";
+  // context.fillRect(0, 0, canvas.width, canvas.height);
+  // context.fill();
 
   const startPaint = useCallback(e => {
     const coordinates = getCoordinates(e);
@@ -67,9 +73,8 @@ export default function Canvas(props) {
       context.globalAlpha = opacity;
 
       if (context) {
-        // drawLine(originalMousePosition, newMousePosition, context);
-
-        // context.clearRect(0, 0, canvas.width, canvas.height); // clearing before draw new circle
+        // TO-DO buttons DO/UNDO
+        // context.clearRect(0, 0, canvas.width, canvas.height); // clearing before draw drawing
 
         switch (figure) {
           case "circle":

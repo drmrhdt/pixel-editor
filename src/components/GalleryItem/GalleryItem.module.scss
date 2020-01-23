@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.gallery-item {
+  box-sizing: border-box;
+  width: 30%;
+  padding: 10px;
+
+  background-color: $border-color;
+
+  &__image {
+    width: 100%;
+  }
+}

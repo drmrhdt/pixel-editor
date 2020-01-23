@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import classNames from "classnames";
 import { selectFigure } from "../../store/actions/selectFigure";
-import styles from "./ToolFigures.module.scss";
+// import styles from "./ToolFigures.module.scss";
 
 export default function ToolFigures(props) {
   const { className } = props;

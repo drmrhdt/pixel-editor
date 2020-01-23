@@ -2,8 +2,8 @@ import React from "react";
 import classNames from "classnames";
 import ColorPicker from "../ColorPicker";
 import ToolSize from "../ToolSize";
-import ToolLineJoin from "../ToolLineJoin";
-import ToolLine from "../ToolLine";
+// import ToolLineJoin from "../ToolLineJoin";
+// import ToolLine from "../ToolLine";
 import ToolFigures from "../ToolFigures";
 import ToolPattern from "../ToolPattern";
 import ToolShadow from "../ToolShadow";
@@ -30,7 +30,6 @@ export default function Toolbox(props) {
       <h3 className={styles.toolbox__title}>Opacity</h3>
       <ToolOpacity className={styles["toolbox__tool-group_layout_row"]} />
       <h3 className={styles.toolbox__title}>Gradient</h3>
-      {/* <ToolLineJoin /> */}
     </div>
   );
 }
