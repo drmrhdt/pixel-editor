@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import { selectOpacity } from "../../store/actions/selectOpacity";
@@ -7,10 +7,12 @@ import styles from "./ToolOpacity.module.scss";
 export default function ToolOpacity(props) {
   const { className } = props;
   const opacity = useSelector(state => state.selectOpacity.opacity);
+  const [opacityValue, setOpacityValue] = useState(Math.round(opacity * 100));
   const dispatch = useDispatch();
 
   const pickOpacity = e => {
-    dispatch(selectOpacity(parseFloat(e.target.value)));
+    setOpacityValue(Math.round(opacity * 100));
+    dispatch(selectOpacity(parseFloat(e.target.value / 100)));
   };
 
   return (
@@ -20,19 +22,19 @@ export default function ToolOpacity(props) {
     >
       <input
         type="range"
-        value={opacity}
-        step="0.01"
+        value={opacityValue}
+        step="1"
         min="0"
-        max="1"
+        max="100"
         onChange={pickOpacity}
       />
       <input
         className={styles["tool-opacity__input_type_number"]}
         type="number"
-        value={opacity}
-        step="0.01"
+        value={opacityValue}
+        step="1"
         min="0"
-        max="1"
+        max="100"
         onChange={pickOpacity}
       />
     </label>
