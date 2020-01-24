@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+$items: square, rectangle, circle, line;
+
+@each $item in $items {
+  .radio-button__label_type_#{$item} {
+    background: url("../../img/#{$item}.svg") no-repeat center;
+    background-size: 80%;
+  }
+}
+
+.radio-button {
+  &__label {
+    display: block;
+    width: 35px;
+    height: 35px;
+
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &__label_status_checked {
+    background-color: $border-color;
+  }
+
+  &__input {
+    display: none;
+  }
+}

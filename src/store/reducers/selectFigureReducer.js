@@ -6,7 +6,7 @@ import {
 } from "../constants";
 
 const initialState = {
-  figure: "circle"
+  figure: "square"
 };
 
 export const selectFigureReducer = (state = initialState, action) => {
