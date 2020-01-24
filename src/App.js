@@ -22,10 +22,14 @@ function App() {
   useEffect(() => {
     const getItems = async () => {
       const items = await getCollection("images");
-      setImages(items);
+      setImages(sortByDate(items));
     };
     getItems();
   }, []);
+
+  const sortByDate = unsortedData => {
+    return unsortedData.sort((a, b) => a.date - b.date);
+  };
 
   const uploadImageToStorage = () => {
     if (canvasRef) {
