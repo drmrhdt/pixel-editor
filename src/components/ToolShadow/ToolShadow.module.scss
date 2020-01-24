@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .tool-shadow {
   & > :nth-child(n) {
     margin: 0 5px 10px 0;
@@ -22,7 +24,7 @@
     height: 100px;
 
     font-size: 10px;
-    color: #c4c4c4;
+    color: $text-color;
   }
 
   &__input {

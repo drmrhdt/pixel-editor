@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .tool-size {
   position: relative;
 
@@ -21,7 +23,7 @@
     margin: 0 0 0 5px;
 
     font-size: 10px;
-    color: #c4c4c4;
+    color: $text-color;
   }
 
   &__input {

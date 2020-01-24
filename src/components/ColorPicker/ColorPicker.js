@@ -39,15 +39,14 @@ export default function ColorPicker(props) {
       <label
         className={styles["color-picker__label"]}
         style={{ backgroundColor: color }}
-        htmlFor={colorParameter}
-      />
-      <input
-        className={styles["color-picker__input"]}
-        type="color"
-        value={{ color }}
-        onChange={pickColor}
-        id={colorParameter}
-      />
+      >
+        <input
+          className={styles["color-picker__input"]}
+          type="color"
+          value={color}
+          onChange={pickColor}
+        />
+      </label>
     </div>
   );
 }
