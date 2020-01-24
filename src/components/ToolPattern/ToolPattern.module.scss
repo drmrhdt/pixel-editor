@@ -1,4 +1,4 @@
-$items: square, rectangle, circle, line, bubbles, nested;
+$items: bubbles, nested;
 
 @each $item in $items {
   .radio-button__label_type_#{$item} {

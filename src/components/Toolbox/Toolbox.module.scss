@@ -13,6 +13,10 @@
   &__tool-group_layout_row {
     display: flex;
     align-items: center;
+
+    & > :nth-child(n) {
+      margin: 0 5px 0 0;
+    }
   }
 
   &__tool-group_layout_column {

@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import classNames from "classnames";
 import RadioButton from "../RadioButton";
 import { selectFigure } from "../../store/actions/selectFigure";
 import styles from "./ToolFigures.module.scss";
@@ -15,26 +14,30 @@ export default function ToolFigures(props) {
   };
 
   return (
-    <div className={classNames(styles["tool-figures"], className)}>
+    <div className={className}>
       <RadioButton
-        item="square"
-        name="figure"
-        selectedItem={figure}
-        onClick={pickFigure}
-      />
-      <RadioButton
+        className={styles["radio-button__label_type_circle"]}
         item="circle"
         name="figure"
         selectedItem={figure}
         onClick={pickFigure}
       />
       <RadioButton
+        className={styles["radio-button__label_type_square"]}
+        item="square"
+        name="figure"
+        selectedItem={figure}
+        onClick={pickFigure}
+      />
+      <RadioButton
+        className={styles["radio-button__label_type_rectangle"]}
         item="rectangle"
         name="figure"
         selectedItem={figure}
         onClick={pickFigure}
       />
       <RadioButton
+        className={styles["radio-button__label_type_line"]}
         item="line"
         name="figure"
         selectedItem={figure}

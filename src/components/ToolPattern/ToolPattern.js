@@ -1,27 +1,35 @@
 import React from "react";
-import classNames from "classnames";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import RadioButton from "../RadioButton";
 import { selectPattern } from "../../store/actions/selectPattern";
+import styles from "./ToolPattern.module.scss";
 
 export default function ToolPattern(props) {
   const { className } = props;
-  // const tool = useSelector(state => state.selectTool.tool);
+
+  const pattern = useSelector(state => state.selectPattern.pattern);
   const dispatch = useDispatch();
 
-  let pickPattern = e => {
-    dispatch(selectPattern(e.target.value));
+  const pickPattern = e => {
+    dispatch(selectPattern(e.currentTarget.dataset.label));
   };
 
   return (
-    <div className={classNames(className)}>
-      <label onChange={pickPattern}>
-        <input type="radio" name="pattern" value="bubbles" />
-        bubbles
-      </label>
-      <label onChange={pickPattern}>
-        <input type="radio" name="pattern" value="nested" />
-        nested
-      </label>
+    <div className={className}>
+      <RadioButton
+        className={styles["radio-button__label_type_bubbles"]}
+        item="bubbles"
+        name="pattern"
+        selectedItem={pattern}
+        onClick={pickPattern}
+      />
+      <RadioButton
+        className={styles["radio-button__label_type_nested"]}
+        item="nested"
+        name="pattern"
+        selectedItem={pattern}
+        onClick={pickPattern}
+      />
     </div>
   );
 }
