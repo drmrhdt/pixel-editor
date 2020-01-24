@@ -1,5 +1,11 @@
+@import "../../styles/variables.scss";
+
 .gallery {
   padding: 10px;
+
+  &__title {
+    color: $bg-color;
+  }
 
   &__list {
     display: flex;

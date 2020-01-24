@@ -21,6 +21,7 @@ export default function ToolOpacity(props) {
       data-label="opacity %"
     >
       <input
+        className={styles["tool-opacity__input_type_range"]}
         type="range"
         value={opacityValue}
         step="1"

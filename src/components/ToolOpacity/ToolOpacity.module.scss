@@ -21,6 +21,11 @@
     color: #c4c4c4;
   }
 
+  &__input_type_range {
+    box-sizing: border-box;
+    width: 60%;
+  }
+
   &__input_type_number {
     box-sizing: border-box;
     width: 40px;
