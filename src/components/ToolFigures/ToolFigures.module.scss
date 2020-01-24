@@ -1,4 +1,12 @@
 @import "../../styles/variables.scss";
+$figures: square, rectangle, circle, line;
+
+@each $figure in $figures {
+  .tool-figures__tool_type_#{$figure} {
+    background: url("../../img/#{$figure}.svg") no-repeat center;
+    background-size: 80%;
+  }
+}
 
 .tool-figures {
   & > :nth-child(n) {
@@ -14,20 +22,11 @@
     cursor: pointer;
   }
 
+  &__tool-label_status_checked {
+    background-color: $border-color;
+  }
+
   &__tool-input {
     display: none;
-
-    &:checked + label {
-      background-color: $border-color;
-    }
-  }
-}
-
-$figures: square, rectangle, circle, line;
-
-@each $figure in $figures {
-  .tool-figures__tool_type_#{$figure} {
-    background: url("../../img/#{$figure}.svg") no-repeat center;
-    background-size: 80%;
   }
 }

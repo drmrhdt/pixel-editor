@@ -1,5 +1,5 @@
 const initialState = {
-  figure: null
+  figure: "circle"
 };
 
 export const selectFigureReducer = (state = initialState, action) => {
