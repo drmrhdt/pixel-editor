@@ -169,7 +169,7 @@ export default function Canvas(props) {
       id="canvas"
       className={styles.canvas}
       ref={canvasRef}
-      width={document.documentElement.clientWidth - 300}
+      width={document.documentElement.clientWidth - 200}
       height={document.documentElement.clientHeight}
     />
   );

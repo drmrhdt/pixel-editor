@@ -29,7 +29,6 @@ export default function Toolbox(props) {
       <ToolShadow className={styles["toolbox__tool-group_layout_row"]} />
       <h3 className={styles.toolbox__title}>Opacity</h3>
       <ToolOpacity className={styles["toolbox__tool-group_layout_row"]} />
-      <h3 className={styles.toolbox__title}>Gradient</h3>
     </div>
   );
 }

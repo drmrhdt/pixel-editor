@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+
+.tool-figures {
+  & > :nth-child(n) {
+    margin-right: 5px;
+  }
+
+  &__tool-label {
+    display: block;
+    width: 35px;
+    height: 35px;
+
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &__tool-input {
+    display: none;
+
+    &:checked + label {
+      background-color: $border-color;
+    }
+  }
+}
+
+$figures: square, rectangle, circle, line;
+
+@each $figure in $figures {
+  .tool-figures__tool_type_#{$figure} {
+    background: url("../../img/#{$figure}.svg") no-repeat center;
+    background-size: 80%;
+  }
+}

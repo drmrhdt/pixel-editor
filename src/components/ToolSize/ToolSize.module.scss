@@ -1,12 +1,38 @@
 .tool-size {
+  position: relative;
+
   display: flex;
 
   vertical-align: middle;
+
+  & :nth-child(n) {
+    margin: 0 0 0 5px;
+  }
+
+  &:after {
+    content: attr(data-label);
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    display: block;
+    width: 40px;
+    height: 100px;
+    margin: 0 0 0 5px;
+
+    font-size: 10px;
+    color: #c4c4c4;
+  }
 
   &__input {
     box-sizing: border-box;
     width: 40px;
     height: 30px;
-    padding: 5px;
+    padding: 5px 0 5px 5px;
+
+    font-size: 12px;
+
+    border: none;
+    border-radius: 5px;
   }
 }

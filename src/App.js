@@ -5,6 +5,7 @@ import Canvas from "./components/Canvas";
 import Toolbox from "./components/Toolbox";
 import Button from "./components/Button";
 import Gallery from "./components/Gallery";
+import downloadIcon from "./img/download.png";
 import styles from "./App.module.scss";
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
               className={styles["app__button-save-to-galery"]}
               onClick={uploadImageToStorage}
             >
-              Save to gallery
+              Add to gallery
             </Button>
             <Button
               className={styles["app__button-download"]}
@@ -60,7 +61,11 @@ function App() {
                 href={url !== "#" ? url : "#"}
                 download="zen_drawing.png"
               >
-                Download
+                <img
+                  className={styles["app__button-download-image"]}
+                  src={downloadIcon}
+                  alt="download button"
+                />
               </a>
             </Button>
           </div>

@@ -12,8 +12,7 @@ export default function ToolSize() {
   };
 
   return (
-    <label className={styles["tool-size"]}>
-      <span>size</span>
+    <label className={styles["tool-size"]} data-label="size">
       <input
         className={styles["tool-size__input"]}
         type="number"

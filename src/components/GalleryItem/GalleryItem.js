@@ -3,9 +3,13 @@ import Button from "../Button";
 import styles from "./GalleryItem.module.scss";
 
 export default function GalleryItem(props) {
-  const { url, date } = props.image;
+  const { url, date, rating } = props.image;
   const fromTimestamp = new Date(date);
-  const time = `${fromTimestamp.getHours()}:${fromTimestamp.getMinutes()}`;
+  const time = `${fromTimestamp.getHours()}:${
+    fromTimestamp.getMinutes() < 10
+      ? "0" + fromTimestamp.getMinutes()
+      : fromTimestamp.getMinutes()
+  }`;
   const day =
     fromTimestamp.getDate() < 10
       ? "0" + fromTimestamp.getDate()
@@ -22,12 +26,17 @@ export default function GalleryItem(props) {
         src={url}
         alt="gallery item"
       />
-      <div>
-        {time}
-        <br />
-        {createdAt}
+      <div className={styles["gallery-item__content"]}>
+        <div>
+          {time}
+          <br />
+          {createdAt}
+        </div>
+        <div className={styles["gallery-item__rating"]}>
+          {rating}
+          <Button>Like</Button>
+        </div>
       </div>
-      <Button>Like</Button>
     </div>
   );
 }

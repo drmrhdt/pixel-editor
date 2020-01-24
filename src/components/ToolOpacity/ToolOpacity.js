@@ -14,8 +14,10 @@ export default function ToolOpacity(props) {
   };
 
   return (
-    <label className={classNames(styles["tool-opacity"], className)}>
-      <span>opacity %</span>
+    <label
+      className={classNames(styles["tool-opacity"], className)}
+      data-label="opacity %"
+    >
       <input
         type="range"
         value={opacity}

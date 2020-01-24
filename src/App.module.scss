@@ -5,20 +5,23 @@
   flex-direction: column;
   justify-content: space-between;
 
-  background-color: $bg-color;
+  // background-color: $bg-color;
 }
 
 .app {
   display: flex;
 
   background-color: $bg-color;
+  box-shadow: 0 0 5px 5px $bg-light;
 
   &__box {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     width: 100%;
-    padding: 10px;
+    padding: 10px 0 10px 10px;
+
+    // box-shadow: -6px 0 5px 5px $bg-light;
   }
 
   &__title {
@@ -31,10 +34,19 @@
 
   &__buttons-group {
     display: flex;
+  }
 
-    &:first-child {
-      margin-bottom: 10px;
-    }
+  &__button-download-image {
+    width: 20px;
+  }
+
+  &__button-download {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__button-save-to-galery {
+    width: 70%;
   }
 
   &__button-save-to-galery,
