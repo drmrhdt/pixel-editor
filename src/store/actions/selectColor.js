@@ -1,6 +1,8 @@
-const SELECT_STROKE_STYLE = "SELECT_STROKE_STYLE";
-const SELECT_FILL_STYLE = "SELECT_FILL_STYLE";
-const SELECT_SHADOW_COLOR = "SELECT_SHADOW_COLOR";
+import {
+  SELECT_STROKE_STYLE,
+  SELECT_FILL_STYLE,
+  SELECT_SHADOW_COLOR
+} from "../constants";
 
 export const selectStrokeStyle = payload => {
   return {

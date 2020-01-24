@@ -1,5 +1,4 @@
-const SELECT_BUBBLES_PATTERN = "SELECT_BUBBLES_PATTERN";
-const SELECT_NESTED_PATTERN = "SELECT_NESTED_PATTERN";
+import { SELECT_BUBBLES_PATTERN, SELECT_NESTED_PATTERN } from "../constants";
 
 export const selectPattern = payload => {
   switch (payload) {

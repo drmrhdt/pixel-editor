@@ -1,10 +1,12 @@
+import { SELECT_TOOL_LINE } from "../constants";
+
 const initialState = {
   tool: "line"
 };
 
 export const selectToolReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SELECT_TOOL_LINE":
+    case SELECT_TOOL_LINE:
       return {
         ...state,
         tool: action.payload

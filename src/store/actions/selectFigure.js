@@ -1,7 +1,9 @@
-const SELECT_SQUARE_TOOL = "SELECT_SQUARE_TOOL";
-const SELECT_RECTANGLE_TOOL = "SELECT_RECTANGLE_TOOL";
-const SELECT_CIRCLE_TOOL = "SELECT_CIRCLE_TOOL";
-const SELECT_LINE_TOOL = "SELECT_LINE_TOOL";
+import {
+  SELECT_SQUARE_TOOL,
+  SELECT_RECTANGLE_TOOL,
+  SELECT_CIRCLE_TOOL,
+  SELECT_LINE_TOOL
+} from "../constants";
 
 export const selectFigure = payload => {
   switch (payload) {

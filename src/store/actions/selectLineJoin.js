@@ -1,4 +1,4 @@
-const SELECT_LINE_JOIN = "SELECT_LINE_JOIN";
+import { SELECT_LINE_JOIN } from "../constants";
 
 export const selectLineJoin = payload => {
   return {

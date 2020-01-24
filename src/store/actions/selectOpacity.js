@@ -1,4 +1,4 @@
-const SELECT_OPACITY = "SELECT_OPACITY";
+import { SELECT_OPACITY } from "../constants";
 
 export const selectOpacity = payload => {
   return {

@@ -1,4 +1,4 @@
-const SELECT_SIZE = "SELECT_SIZE";
+import { SELECT_SIZE } from "../constants";
 
 export const selectSize = payload => {
   return {
