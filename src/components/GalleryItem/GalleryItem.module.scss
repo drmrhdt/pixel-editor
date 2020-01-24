@@ -18,13 +18,29 @@
 
   &__content {
     display: flex;
-    flex-direction: column;
-    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 5px 10px;
 
     background-color: $white;
   }
 
   &__rating {
     align-self: flex-end;
+  }
+
+  &__time,
+  &__date {
+    font-size: 14px;
+  }
+
+  &__time {
+    margin-right: 10px;
+  }
+
+  &__icon-like {
+    font-size: 26px;
+
+    background-color: transparent;
   }
 }

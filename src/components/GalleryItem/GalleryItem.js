@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../Button";
+import unicodeIcons from "../../styles/unicodeIcons";
 import styles from "./GalleryItem.module.scss";
 
 export default function GalleryItem(props) {
@@ -27,14 +28,15 @@ export default function GalleryItem(props) {
         alt="gallery item"
       />
       <div className={styles["gallery-item__content"]}>
-        <div>
-          {time}
-          <br />
-          {createdAt}
+        <div className={styles["gallery-item__created-at-date"]}>
+          <span className={styles["gallery-item__time"]}>{time}</span>
+          <span className={styles["gallery-item__date"]}>{createdAt}</span>
         </div>
         <div className={styles["gallery-item__rating"]}>
           {rating}
-          <Button>Like</Button>
+          <Button className={styles["gallery-item__icon-like"]}>
+            {unicodeIcons.filledHeart}
+          </Button>
         </div>
       </div>
     </div>
