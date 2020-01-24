@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import ColorPicker from "../ColorPicker";
+import InputNumber from "../InputNumber";
 import { selectSize } from "../../store/actions/selectSize";
-import styles from "./ToolSize.module.scss";
 
-export default function ToolSize() {
+export default function ToolBorder(props) {
+  const { className } = props;
   const size = useSelector(state => state.selectSize.toolSize);
   const dispatch = useDispatch();
 
@@ -12,14 +14,16 @@ export default function ToolSize() {
   };
 
   return (
-    <label className={styles["tool-size"]} data-label="size">
-      <input
-        className={styles["tool-size__input"]}
+    <div className={className}>
+      <ColorPicker colorParameter="strokeStyle" />
+      <InputNumber
         type="number"
-        value={size}
+        label="size"
+        min="0"
         max="15"
+        value={size}
         onChange={pickSize}
       />
-    </label>
+    </div>
   );
 }

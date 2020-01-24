@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import ColorPicker from "../ColorPicker";
 import {
@@ -7,7 +6,7 @@ import {
   selectShadowOffsetX,
   selectShadowOffsetY
 } from "../../store/actions/selectToolShadowParameter";
-import styles from "./ToolShadow.module.scss";
+import InputNumber from "../InputNumber";
 
 export default function ToolShadow(props) {
   const { className } = props;
@@ -29,38 +28,31 @@ export default function ToolShadow(props) {
   };
 
   return (
-    <div className={classNames(styles["tool-shadow"], className)}>
+    <div className={className}>
       <ColorPicker colorParameter="shadowColor" />
-      <label className={styles["tool-shadow__label"]} data-label="blur">
-        <input
-          className={styles["tool-shadow__input"]}
-          type="number"
-          min="-15"
-          max="15"
-          value={shadowBlur}
-          onChange={pickShadowBlur}
-        />
-      </label>
-      <label className={styles["tool-shadow__label"]} data-label="offset x">
-        <input
-          className={styles["tool-shadow__input"]}
-          type="number"
-          min="-15"
-          max="15"
-          value={shadowOffsetX}
-          onChange={pickShadowOffsetX}
-        />
-      </label>
-      <label className={styles["tool-shadow__label"]} data-label="offset y">
-        <input
-          className={styles["tool-shadow__input"]}
-          type="number"
-          min="-15"
-          max="15"
-          value={shadowOffsetY}
-          onChange={pickShadowOffsetY}
-        />
-      </label>
+      <InputNumber
+        label="blur"
+        min="-15"
+        max="15"
+        value={shadowBlur}
+        onChange={pickShadowBlur}
+      />
+      <InputNumber
+        type="number"
+        label="offset x"
+        min="-15"
+        max="15"
+        value={shadowOffsetX}
+        onChange={pickShadowOffsetX}
+      />
+      <InputNumber
+        type="number"
+        label="offset y"
+        min="-15"
+        max="15"
+        value={shadowOffsetY}
+        onChange={pickShadowOffsetY}
+      />
     </div>
   );
 }

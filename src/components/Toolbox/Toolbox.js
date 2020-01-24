@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
+import ToolBorder from "../ToolBorder";
 import ColorPicker from "../ColorPicker";
-import ToolSize from "../ToolSize";
 // import ToolLineJoin from "../ToolLineJoin";
 // import ToolLine from "../ToolLine";
 import ToolFigures from "../ToolFigures";
@@ -19,10 +19,7 @@ export default function Toolbox(props) {
       <h3 className={styles.toolbox__title}>Pattern</h3>
       <ToolPattern className={styles["toolbox__tool-group_layout_row"]} />
       <h3 className={styles.toolbox__title}>Border</h3>
-      <div className={styles["toolbox__tool-group_layout_row"]}>
-        <ColorPicker colorParameter="strokeStyle" />
-        <ToolSize />
-      </div>
+      <ToolBorder className={styles["toolbox__tool-group_layout_row"]} />
       <h3 className={styles.toolbox__title}>Background</h3>
       <ColorPicker colorParameter="fillStyle" />
       <h3 className={styles.toolbox__title}>Shadow</h3>
