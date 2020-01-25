@@ -46,8 +46,8 @@ function App() {
   return (
     <div className={styles.temp}>
       <div className={styles.app}>
-        <div className={styles.app__box}>
-          <h1 className={styles.app__title}>Zen Drawing App</h1>
+        <div className={styles.app__sidebar}>
+          <h1 className={styles.app__logo}>Zen Drawing App</h1>
           <Toolbox className={styles.app__toolbox} />
           <div className={styles["app__buttons-group"]}>
             <Button

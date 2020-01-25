@@ -15,6 +15,7 @@ export default function ToolBorder(props) {
 
   return (
     <div className={className}>
+      <h3>Border</h3>
       <ColorPicker colorParameter="strokeStyle" />
       <InputNumber
         type="number"

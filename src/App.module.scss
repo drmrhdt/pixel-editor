@@ -14,17 +14,16 @@
   background-color: $bg-color;
   box-shadow: 0 0 5px 5px $bg-light;
 
-  &__box {
+  &__sidebar {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
     padding: 10px 0 10px 10px;
-
-    // box-shadow: -6px 0 5px 5px $bg-light;
   }
 
-  &__title {
+  &__logo {
     width: 70%;
     margin: 0;
 
@@ -59,4 +58,10 @@
     color: $black;
     text-decoration: none;
   }
+}
+
+h3 {
+  margin: 0;
+
+  font-size: $toolbox-title-font-size;
 }

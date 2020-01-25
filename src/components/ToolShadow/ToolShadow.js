@@ -28,31 +28,34 @@ export default function ToolShadow(props) {
   };
 
   return (
-    <div className={className}>
-      <ColorPicker colorParameter="shadowColor" />
-      <InputNumber
-        label="blur"
-        min="-15"
-        max="15"
-        value={shadowBlur}
-        onChange={pickShadowBlur}
-      />
-      <InputNumber
-        type="number"
-        label="offset x"
-        min="-15"
-        max="15"
-        value={shadowOffsetX}
-        onChange={pickShadowOffsetX}
-      />
-      <InputNumber
-        type="number"
-        label="offset y"
-        min="-15"
-        max="15"
-        value={shadowOffsetY}
-        onChange={pickShadowOffsetY}
-      />
-    </div>
+    <>
+      <h3>Shadow</h3>
+      <div className={className}>
+        <ColorPicker colorParameter="shadowColor" />
+        <InputNumber
+          label="blur"
+          min="-15"
+          max="15"
+          value={shadowBlur}
+          onChange={pickShadowBlur}
+        />
+        <InputNumber
+          type="number"
+          label="offset x"
+          min="-15"
+          max="15"
+          value={shadowOffsetX}
+          onChange={pickShadowOffsetX}
+        />
+        <InputNumber
+          type="number"
+          label="offset y"
+          min="-15"
+          max="15"
+          value={shadowOffsetY}
+          onChange={pickShadowOffsetY}
+        />
+      </div>
+    </>
   );
 }

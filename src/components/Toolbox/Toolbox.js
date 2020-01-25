@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import ToolBorder from "../ToolBorder";
-import ColorPicker from "../ColorPicker";
+import ToolBackground from "../ToolBackground";
 // import ToolLineJoin from "../ToolLineJoin";
 // import ToolLine from "../ToolLine";
 import ToolFigures from "../ToolFigures";
@@ -14,18 +14,48 @@ export default function Toolbox(props) {
   const { className } = props;
   return (
     <div className={classNames(styles.toolbox, className)}>
-      <h3 className={styles.toolbox__title}>Figure</h3>
-      <ToolFigures className={styles["toolbox__tool-group_layout_row"]} />
-      <h3 className={styles.toolbox__title}>Pattern</h3>
-      <ToolPattern className={styles["toolbox__tool-group_layout_row"]} />
-      <h3 className={styles.toolbox__title}>Border</h3>
-      <ToolBorder className={styles["toolbox__tool-group_layout_row"]} />
-      <h3 className={styles.toolbox__title}>Background</h3>
-      <ColorPicker colorParameter="fillStyle" />
-      <h3 className={styles.toolbox__title}>Shadow</h3>
-      <ToolShadow className={styles["toolbox__tool-group_layout_row"]} />
-      <h3 className={styles.toolbox__title}>Opacity</h3>
-      <ToolOpacity className={styles["toolbox__tool-group_layout_row"]} />
+      <div className={styles["toolbox__layout_row"]}>
+        <ToolFigures
+          className={classNames(
+            styles["toolbox__tool-group_layout_row"],
+            styles["toolbox_width"],
+            styles["toolbox__margin-bottom-s"]
+          )}
+        />
+        <ToolPattern
+          className={classNames(
+            styles["toolbox__tool-group_layout_row"],
+            styles["toolbox_width"],
+            styles["toolbox__margin-bottom-s"]
+          )}
+        />
+      </div>
+      <div className={styles["toolbox__layout_row"]}>
+        <ToolBorder
+          className={classNames(
+            styles["toolbox__tool-group_layout_row"],
+            styles["toolbox_width"],
+            styles["toolbox__margin-bottom-m"]
+          )}
+        />
+        <ToolBackground
+          className={classNames(
+            styles["toolbox__tool-group_layout_row"],
+            styles["toolbox_width"],
+            styles["toolbox__margin-bottom-m"]
+          )}
+        />
+      </div>
+      <div className={styles["toolbox__margin-bottom-m"]}>
+        <ToolShadow
+          className={classNames(styles["toolbox__tool-group_layout_row"])}
+        />
+      </div>
+      <div className={styles["toolbox__margin-bottom-m"]}>
+        <ToolOpacity
+          className={classNames(styles["toolbox__tool-group_layout_row"])}
+        />
+      </div>
     </div>
   );
 }

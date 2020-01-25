@@ -15,6 +15,7 @@ export default function ToolFigures(props) {
 
   return (
     <div className={className}>
+      <h3>Figure</h3>
       <RadioButton
         className={styles["radio-button__label_type_circle"]}
         item="circle"

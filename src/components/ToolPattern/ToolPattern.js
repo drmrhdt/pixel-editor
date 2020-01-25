@@ -16,6 +16,7 @@ export default function ToolPattern(props) {
 
   return (
     <div className={className}>
+      <h3>Pattern</h3>
       <RadioButton
         className={styles["radio-button__label_type_bubbles"]}
         item="bubbles"

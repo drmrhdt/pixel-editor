@@ -1,34 +1,33 @@
 @import "../../styles/variables.scss";
 
 .toolbox {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 10px 0;
+  padding: 10px 10px 10px 0;
 
   background-color: $bg-color;
 
   &__tool-group_layout_row {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
 
     & > :nth-child(n) {
       margin: 0 5px 0 0;
     }
   }
 
-  &__tool-group_layout_column {
-    flex-direction: column;
-
-    @extend .toolbox__tool-group_layout_row;
+  &__margin-bottom-s {
+    margin: 0 0 20px 0;
   }
 
-  &__title {
-    margin: 15px 0 5px 0;
+  &__margin-bottom-m {
+    margin: 0 0 35px 0;
+  }
 
-    font-size: $toolbox-title-font-size;
-    color: $text-color;
+  &__layout_row {
+    display: flex;
+  }
+
+  &_width {
+    width: 45%;
   }
 }

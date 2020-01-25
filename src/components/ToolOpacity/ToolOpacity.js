@@ -16,25 +16,28 @@ export default function ToolOpacity(props) {
   };
 
   return (
-    <div className={className}>
-      <InputNumber
-        className={styles["tool-opacity__label_type_range"]}
-        label="opacity %"
-        type="range"
-        step="1"
-        min="0"
-        max="100"
-        value={opacityValue}
-        onChange={pickOpacity}
-      />
-      <InputNumber
-        type="number"
-        step="1"
-        min="0"
-        max="100"
-        value={opacityValue}
-        onChange={pickOpacity}
-      />
-    </div>
+    <>
+      <h3>Opacity</h3>
+      <div className={className}>
+        <InputNumber
+          className={styles["tool-opacity__label_type_range"]}
+          label="opacity %"
+          type="range"
+          step="1"
+          min="0"
+          max="100"
+          value={opacityValue}
+          onChange={pickOpacity}
+        />
+        <InputNumber
+          type="number"
+          step="1"
+          min="0"
+          max="100"
+          value={opacityValue}
+          onChange={pickOpacity}
+        />
+      </div>
+    </>
   );
 }
