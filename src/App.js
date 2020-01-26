@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getCollection } from "./utilities/firestore";
+import { useSelector, connect } from "react-redux";
+import { getCollectionAsync } from "./store/actions/getGalleryItems";
 import { uploadImageToStorageAndFirestore } from "./utilities/storage";
 import Canvas from "./components/Canvas";
 import Toolbox from "./components/Toolbox";
@@ -8,28 +9,24 @@ import Gallery from "./components/Gallery";
 import downloadIcon from "./img/download.png";
 import styles from "./App.module.scss";
 
-function App() {
-  const [canvasRef, setCanvasRef] = useState(null);
-  const [images, setImages] = useState([]);
-  const [url, setUrl] = useState("#");
+function App({ getCollectionAsync }) {
+  const sortByDate = unsortedData => {
+    return unsortedData.sort((a, b) => a.date - b.date);
+  };
 
-  const downloadImage = () => {
+  const [canvasRef, setCanvasRef] = useState(null);
+  const [url, setUrl] = useState("#");
+  const items = useSelector(state => sortByDate(state.items.items));
+
+  const setUrlOnClick = () => {
     if (canvasRef) {
       setUrl(canvasRef.current.toDataURL("image/png"));
     }
   };
 
   useEffect(() => {
-    const getItems = async () => {
-      const items = await getCollection("images");
-      setImages(sortByDate(items));
-    };
-    getItems();
-  }, []);
-
-  const sortByDate = unsortedData => {
-    return unsortedData.sort((a, b) => a.date - b.date);
-  };
+    getCollectionAsync("images");
+  }, [getCollectionAsync]);
 
   const uploadImageToStorage = () => {
     if (canvasRef) {
@@ -58,7 +55,7 @@ function App() {
             </Button>
             <Button
               className={styles["app__button-download"]}
-              onClick={downloadImage}
+              onClick={setUrlOnClick}
             >
               <a
                 className={styles.app__link}
@@ -76,9 +73,15 @@ function App() {
         </div>
         <Canvas setCanvasRef={setCanvasRef} />
       </div>
-      <Gallery images={images} />
+      <Gallery images={items} />
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    getCollectionAsync: collection => dispatch(getCollectionAsync(collection))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

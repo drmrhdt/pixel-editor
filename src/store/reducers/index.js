@@ -7,6 +7,7 @@ import { selectFigureReducer } from "./selectFigureReducer";
 import { selectPatternReducer } from "./selectPatternReducer";
 import { selectShadowParameterReducer } from "./selectShadowParameterReducer";
 import { selectOpacityReducer } from "./selectOpacityReducer";
+import { getGalleryItemsReducer } from "./getGalleryItemsReducer";
 
 export const rootReducer = combineReducers({
   colorSelect: selectColorReducer,
@@ -16,5 +17,6 @@ export const rootReducer = combineReducers({
   selectFigure: selectFigureReducer,
   selectPattern: selectPatternReducer,
   selectShadowParameter: selectShadowParameterReducer,
-  selectOpacity: selectOpacityReducer
+  selectOpacity: selectOpacityReducer,
+  items: getGalleryItemsReducer
 });
