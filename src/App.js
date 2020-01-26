@@ -10,13 +10,13 @@ import downloadIcon from "./img/download.png";
 import styles from "./App.module.scss";
 
 function App({ getCollectionAsync }) {
-  const sortByDate = unsortedData => {
-    return unsortedData.sort((a, c) => a.date - c.date);
+  const sortByDateAsc = unsortedData => {
+    return unsortedData.sort((a, b) => a.date - b.date);
   };
 
   const [canvasRef, setCanvasRef] = useState(null);
   const [url, setUrl] = useState("#");
-  const items = useSelector(state => sortByDate(state.items.items));
+  const items = useSelector(state => sortByDateAsc(state.items.items));
 
   const setUrlOnClick = () => {
     if (canvasRef) {
