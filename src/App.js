@@ -11,7 +11,7 @@ import styles from "./App.module.scss";
 
 function App({ getCollectionAsync }) {
   const sortByDate = unsortedData => {
-    return unsortedData.sort((a, b) => a.date - b.date);
+    return unsortedData.sort((a, c) => a.date - c.date);
   };
 
   const [canvasRef, setCanvasRef] = useState(null);
