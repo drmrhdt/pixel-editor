@@ -4,8 +4,7 @@ import RadioButton from "../RadioButton";
 import { selectFigure } from "../../store/actions/selectFigure";
 import styles from "./ToolFigures.module.scss";
 
-export default function ToolFigures(props) {
-  const { className } = props;
+export default function ToolFigures({ className }) {
   const figure = useSelector(state => state.selectFigure.figure);
   const dispatch = useDispatch();
 

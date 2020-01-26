@@ -2,8 +2,7 @@ import React from "react";
 import GalleryItem from "../GalleryItem";
 import styles from "./Gallery.module.scss";
 
-export default function Gallery(props) {
-  const { images } = props;
+export default function Gallery({ images }) {
   return (
     <div className={styles.gallery}>
       <h2 className={styles.gallery__title}>Gallery</h2>

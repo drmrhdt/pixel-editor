@@ -8,8 +8,7 @@ import {
 } from "../../store/actions/selectToolShadowParameter";
 import InputNumber from "../InputNumber";
 
-export default function ToolShadow(props) {
-  const { className } = props;
+export default function ToolShadow({ className }) {
   const { shadowBlur, shadowOffsetX, shadowOffsetY } = useSelector(
     state => state.selectShadowParameter
   );

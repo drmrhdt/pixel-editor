@@ -10,8 +10,7 @@ import ToolShadow from "../ToolShadow";
 import ToolOpacity from "../ToolOpacity";
 import styles from "./Toolbox.module.scss";
 
-export default function Toolbox(props) {
-  const { className } = props;
+export default function Toolbox({ className }) {
   return (
     <div className={classNames(styles.toolbox, className)}>
       <div className={styles["toolbox__layout_row"]}>

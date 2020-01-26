@@ -8,23 +8,30 @@ import {
 } from "../../utilities/drawFigures";
 import styles from "./Canvas.module.scss";
 
-export default function Canvas(props) {
-  const { setCanvasRef } = props;
+export default function Canvas({ setCanvasRef }) {
+  const {
+    color: { strokeStyle },
+    color: { fillStyle },
+    color: { shadowColor },
+    shadow: { shadowBlur },
+    shadow: { shadowOffsetX },
+    shadow: { shadowOffsetY },
+    size,
+    figure,
+    pattern,
+    opacity
+  } = useSelector(state => ({
+    color: state.colorSelect,
+    shadow: state.selectShadowParameter,
+    size: state.selectSize.toolSize,
+    figure: state.selectFigure.figure,
+    pattern: state.selectPattern.pattern,
+    opacity: state => state.selectOpacity.opacity
+  }));
 
-  const { strokeStyle, fillStyle, shadowColor } = useSelector(
-    state => state.colorSelect
-  );
-  const { shadowBlur, shadowOffsetX, shadowOffsetY } = useSelector(
-    state => state.selectShadowParameter
-  );
-
-  const size = useSelector(state => state.selectSize.toolSize);
   // TO-DO add these instruments
   // const lineJoin = useSelector(state => state.selectLineJoin.lineJoin);
   // const tool = useSelector(state => state.selectTool.tool);
-  const figure = useSelector(state => state.selectFigure.figure);
-  const pattern = useSelector(state => state.selectPattern.pattern);
-  const opacity = useSelector(state => state.selectOpacity.opacity);
 
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);

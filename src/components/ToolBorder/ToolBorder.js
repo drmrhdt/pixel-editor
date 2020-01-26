@@ -4,8 +4,7 @@ import ColorPicker from "../ColorPicker";
 import InputNumber from "../InputNumber";
 import { selectSize } from "../../store/actions/selectSize";
 
-export default function ToolBorder(props) {
-  const { className } = props;
+export default function ToolBorder({ className }) {
   const size = useSelector(state => state.selectSize.toolSize);
   const dispatch = useDispatch();
 

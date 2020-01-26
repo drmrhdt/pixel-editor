@@ -2,9 +2,13 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./RadioButton.module.scss";
 
-export default function RadioButton(props) {
-  const { item, name, selectedItem, onClick, className } = props;
-
+export default function RadioButton({
+  item,
+  name,
+  selectedItem,
+  onClick,
+  className
+}) {
   return (
     <label
       className={classNames(
