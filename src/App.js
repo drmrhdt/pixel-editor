@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useCanvasSize } from "./customHooks/useCanvasSize";
 import { useSelector, connect } from "react-redux";
 import {
   getCollection,
@@ -39,11 +40,11 @@ function App({ getCollection, uploadImageToStorageAndFirestore }) {
     }
   };
 
+  const [width, height] = useCanvasSize();
+
   // TO-DO don't keep it here!
   const cleanCanvas = () => {
     const canvas = canvasRef.current.getContext("2d");
-    const width = document.documentElement.clientWidth - 220;
-    const height = document.documentElement.clientHeight;
     canvas.clearRect(0, 0, width, height);
   };
 
