@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  getTimeFromTimestamp,
+  getDateFromTimestamp
+} from "../../utilities/parsers";
 import Button from "../Button";
 import unicodeIcons from "../../styles/unicodeIcons";
 import styles from "./GalleryItem.module.scss";
@@ -9,19 +13,8 @@ export default function GalleryItem({
   item: { rating }
 }) {
   const fromTimestamp = new Date(date);
-  const time = `${fromTimestamp.getHours()}:${
-    fromTimestamp.getMinutes() < 10
-      ? "0" + fromTimestamp.getMinutes()
-      : fromTimestamp.getMinutes()
-  }`;
-  const day =
-    fromTimestamp.getDate() < 10
-      ? "0" + fromTimestamp.getDate()
-      : fromTimestamp.getDate();
-  const month = fromTimestamp.getMonth();
-  const monthForTime = month + 1 < 10 ? "0" + (month + 1) : month + 1;
-  const year = fromTimestamp.getFullYear();
-  const createdAt = `${day}.${monthForTime}.${year}`;
+  const createdAtTime = getTimeFromTimestamp(fromTimestamp);
+  const createdAtDate = getDateFromTimestamp(fromTimestamp);
 
   return (
     <div className={styles["gallery-item"]}>
@@ -32,8 +25,8 @@ export default function GalleryItem({
       />
       <div className={styles["gallery-item__content"]}>
         <div className={styles["gallery-item__created-at-date"]}>
-          <span className={styles["gallery-item__time"]}>{time}</span>
-          <span className={styles["gallery-item__date"]}>{createdAt}</span>
+          <span className={styles["gallery-item__time"]}>{createdAtTime}</span>
+          <span className={styles["gallery-item__date"]}>{createdAtDate}</span>
         </div>
         <div className={styles["gallery-item__rating"]}>
           {rating}

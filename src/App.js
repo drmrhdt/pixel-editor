@@ -4,6 +4,7 @@ import {
   getCollection,
   uploadImageToStorageAndFirestore
 } from "./store/actions/updateGalleryItems";
+import { sortByDateAsc } from "./utilities/sorting";
 import Canvas from "./components/Canvas";
 import Toolbox from "./components/Toolbox";
 import Button from "./components/Button";
@@ -12,10 +13,6 @@ import downloadIcon from "./img/download.png";
 import styles from "./App.module.scss";
 
 function App({ getCollection, uploadImageToStorageAndFirestore }) {
-  const sortByDateAsc = unsortedData => {
-    return unsortedData.sort((a, b) => a.date - b.date);
-  };
-
   const [canvasRef, setCanvasRef] = useState(null);
   const [url, setUrl] = useState("#");
   const items = useSelector(state => sortByDateAsc(state.items.items));
