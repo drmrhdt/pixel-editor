@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ColorPicker from "../ColorPicker";
 
 export default function ToolBackground({ className }) {
@@ -9,3 +10,11 @@ export default function ToolBackground({ className }) {
     </div>
   );
 }
+
+ToolBackground.defaultProps = {
+  className: ""
+};
+
+ToolBackground.propTypes = {
+  className: PropTypes.string
+};

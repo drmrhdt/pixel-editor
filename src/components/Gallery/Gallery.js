@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import GalleryItem from "../GalleryItem";
 import styles from "./Gallery.module.scss";
 
@@ -14,3 +15,14 @@ export default function Gallery({ items }) {
     </div>
   );
 }
+
+Gallery.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      date: PropTypes.number.isRequired
+    })
+  ).isRequired
+};

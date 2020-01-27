@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import RadioButton from "../RadioButton";
 import { selectPattern } from "../../store/actions/selectPattern";
@@ -32,3 +33,11 @@ export default function ToolPattern({ className }) {
     </div>
   );
 }
+
+ToolPattern.defaultProps = {
+  className: ""
+};
+
+ToolPattern.propTypes = {
+  className: PropTypes.string
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import RadioButton from "../RadioButton";
 import { selectFigure } from "../../store/actions/selectFigure";
@@ -46,3 +47,11 @@ export default function ToolFigures({ className }) {
     </div>
   );
 }
+
+ToolFigures.defaultProps = {
+  className: ""
+};
+
+ToolFigures.propTypes = {
+  className: PropTypes.string
+};

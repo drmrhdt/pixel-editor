@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import styles from "./InputNumber.module.scss";
 
 export default function InputNumber({
@@ -36,4 +37,24 @@ InputNumber.defaultProps = {
   max: "100",
   step: "1",
   type: "number"
+};
+
+InputNumber.defaultProps = {
+  className: "",
+  value: null,
+  onChange: () => {},
+  min: "",
+  max: "",
+  step: "",
+  type: "number"
+};
+
+InputNumber.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.number,
+  onChange: PropTypes.func,
+  min: PropTypes.string,
+  max: PropTypes.string,
+  step: PropTypes.string,
+  type: PropTypes.string
 };

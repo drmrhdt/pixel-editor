@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import ToolBorder from "../ToolBorder";
 import ToolBackground from "../ToolBackground";
 // import ToolLineJoin from "../ToolLineJoin";
@@ -58,3 +59,11 @@ export default function Toolbox({ className }) {
     </div>
   );
 }
+
+Toolbox.defaultProps = {
+  className: ""
+};
+
+Toolbox.propTypes = {
+  className: PropTypes.string
+};

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import InputNumber from "../InputNumber";
 import { useSelector, useDispatch } from "react-redux";
 import { selectOpacity } from "../../store/actions/selectOpacity";
@@ -40,3 +41,11 @@ export default function ToolOpacity({ className }) {
     </>
   );
 }
+
+ToolOpacity.defaultProps = {
+  className: ""
+};
+
+ToolOpacity.propTypes = {
+  className: PropTypes.string
+};

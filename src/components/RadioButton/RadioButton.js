@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import styles from "./RadioButton.module.scss";
 
 export default function RadioButton({
@@ -29,3 +30,15 @@ export default function RadioButton({
     </label>
   );
 }
+
+RadioButton.defaultProps = {
+  className: ""
+};
+
+RadioButton.propTypes = {
+  className: PropTypes.string,
+  item: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  selectedItem: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+};

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import {
   drawCircle,
@@ -181,3 +182,11 @@ export default function Canvas({ setCanvasRef }) {
     />
   );
 }
+
+Canvas.defaultProps = {
+  setCanvasRef: () => {}
+};
+
+Canvas.propTypes = {
+  setCanvasRef: PropTypes.func
+};

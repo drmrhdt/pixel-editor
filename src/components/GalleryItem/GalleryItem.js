@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   getTimeFromTimestamp,
   getDateFromTimestamp
@@ -38,3 +39,12 @@ export default function GalleryItem({
     </div>
   );
 }
+
+GalleryItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    date: PropTypes.number.isRequired
+  })
+};

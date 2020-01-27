@@ -39,6 +39,7 @@ function App({ getCollection, uploadImageToStorageAndFirestore }) {
     }
   };
 
+  // TO-DO don't keep it here!
   const cleanCanvas = () => {
     const canvas = canvasRef.current.getContext("2d");
     const width = document.documentElement.clientWidth - 220;

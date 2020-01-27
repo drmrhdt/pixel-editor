@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import ColorPicker from "../ColorPicker";
 import InputNumber from "../InputNumber";
@@ -27,3 +28,11 @@ export default function ToolBorder({ className }) {
     </div>
   );
 }
+
+ToolBorder.defaultProps = {
+  className: ""
+};
+
+ToolBorder.propTypes = {
+  className: PropTypes.string
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import ColorPicker from "../ColorPicker";
 import {
@@ -58,3 +59,11 @@ export default function ToolShadow({ className }) {
     </>
   );
 }
+
+ToolShadow.defaultProps = {
+  className: ""
+};
+
+ToolShadow.propTypes = {
+  className: PropTypes.string
+};

@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import {
   selectFillStyle,
   selectStrokeStyle,
@@ -49,3 +50,7 @@ export default function ColorPicker({ colorParameter }) {
     </div>
   );
 }
+
+ColorPicker.propTypes = {
+  colorParameter: PropTypes.string.isRequired
+};
