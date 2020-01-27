@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, connect } from "react-redux";
-import { getCollectionAsync } from "./store/actions/getGalleryItems";
-import { uploadImageToStorageAndFirestore } from "./utilities/storage";
+import {
+  getCollection,
+  uploadImageToStorageAndFirestore
+} from "./store/actions/updateGalleryItems";
 import Canvas from "./components/Canvas";
 import Toolbox from "./components/Toolbox";
 import Button from "./components/Button";
@@ -9,7 +11,7 @@ import Gallery from "./components/Gallery";
 import downloadIcon from "./img/download.png";
 import styles from "./App.module.scss";
 
-function App({ getCollectionAsync }) {
+function App({ getCollection, uploadImageToStorageAndFirestore }) {
   const sortByDateAsc = unsortedData => {
     return unsortedData.sort((a, b) => a.date - b.date);
   };
@@ -25,8 +27,8 @@ function App({ getCollectionAsync }) {
   };
 
   useEffect(() => {
-    getCollectionAsync("images");
-  }, [getCollectionAsync]);
+    getCollection("images");
+  }, [getCollection]);
 
   const uploadImageToStorage = () => {
     if (canvasRef) {
@@ -78,10 +80,9 @@ function App({ getCollectionAsync }) {
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getCollectionAsync: collection => dispatch(getCollectionAsync(collection))
-  };
+const mapDispatchToProps = {
+  getCollection,
+  uploadImageToStorageAndFirestore
 };
 
 export default connect(null, mapDispatchToProps)(App);
