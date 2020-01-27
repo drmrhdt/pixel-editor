@@ -42,6 +42,13 @@ function App({ getCollection, uploadImageToStorageAndFirestore }) {
     }
   };
 
+  const cleanCanvas = () => {
+    const canvas = canvasRef.current.getContext("2d");
+    const width = document.documentElement.clientWidth - 220;
+    const height = document.documentElement.clientHeight;
+    canvas.clearRect(0, 0, width, height);
+  };
+
   return (
     <div className={styles.temp}>
       <div className={styles.app}>
@@ -49,6 +56,7 @@ function App({ getCollection, uploadImageToStorageAndFirestore }) {
           <h1 className={styles.app__logo}>Zen Drawing App</h1>
           <Toolbox className={styles.app__toolbox} />
           <div className={styles["app__buttons-group"]}>
+            <Button onClick={cleanCanvas}>Clean</Button>
             <Button
               className={styles["app__button-save-to-galery"]}
               onClick={uploadImageToStorage}
