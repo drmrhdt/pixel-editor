@@ -8,8 +8,7 @@ import {
 } from "../../store/actions/selectColor";
 import styles from "./ColorPicker.module.scss";
 
-export default function ColorPicker(props) {
-  const { colorParameter } = props;
+export default function ColorPicker({ colorParameter }) {
   const color = useSelector(state => state.colorSelect[colorParameter]);
   const dispatch = useDispatch();
   let pickColor;

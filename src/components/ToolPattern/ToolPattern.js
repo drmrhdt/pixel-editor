@@ -4,9 +4,7 @@ import RadioButton from "../RadioButton";
 import { selectPattern } from "../../store/actions/selectPattern";
 import styles from "./ToolPattern.module.scss";
 
-export default function ToolPattern(props) {
-  const { className } = props;
-
+export default function ToolPattern({ className }) {
   const pattern = useSelector(state => state.selectPattern.pattern);
   const dispatch = useDispatch();
 

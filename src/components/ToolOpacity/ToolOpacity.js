@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectOpacity } from "../../store/actions/selectOpacity";
 import styles from "./ToolOpacity.module.scss";
 
-export default function ToolOpacity(props) {
-  const { className } = props;
+export default function ToolOpacity({ className }) {
   const opacity = useSelector(state => state.selectOpacity.opacity);
   const [opacityValue, setOpacityValue] = useState(Math.round(opacity * 100));
   const dispatch = useDispatch();
