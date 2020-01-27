@@ -3,10 +3,11 @@
 .radio-button {
   &__label {
     display: block;
-    width: 35px;
-    height: 35px;
+    box-sizing: border-box;
+    width: $tool-width;
+    height: $tool-height;
 
-    border-radius: 5px;
+    border-radius: $border-radius-s;
     cursor: pointer;
   }
 

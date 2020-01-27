@@ -1,8 +1,9 @@
+@import "../../styles/variables.scss";
 $items: square, rectangle, circle, line, bubbles, nested;
 
 @each $item in $items {
   .radio-button__label_type_#{$item} {
     background: url("../../img/#{$item}.svg") no-repeat center;
-    background-size: 80%;
+    background-size: $tool-bg-size;
   }
 }
