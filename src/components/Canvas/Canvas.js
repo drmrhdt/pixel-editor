@@ -1,4 +1,11 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useLayoutEffect,
+  useMemo
+} from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import {
@@ -9,7 +16,29 @@ import {
 } from "../../utilities/drawFigures";
 import styles from "./Canvas.module.scss";
 
+function useCanvasSize() {
+  const [canvasSize, setCanvasSize] = useState([
+    document.documentElement.clientWidth - 220,
+    document.documentElement.clientHeight
+  ]);
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setCanvasSize([
+        document.documentElement.clientWidth - 220,
+        document.documentElement.clientHeight
+      ]);
+    };
+    window.addEventListener("resize", updateSize);
+    return () => {
+      window.removeEventListener("resize", updateSize);
+    };
+  }, [canvasSize]);
+  return canvasSize;
+}
+
 export default function Canvas({ setCanvasRef }) {
+  const [width, height] = useCanvasSize();
+
   const {
     color: { strokeStyle },
     color: { fillStyle },
@@ -177,8 +206,8 @@ export default function Canvas({ setCanvasRef }) {
       id="canvas"
       className={styles.canvas}
       ref={canvasRef}
-      width={document.documentElement.clientWidth - 220}
-      height={document.documentElement.clientHeight}
+      width={width}
+      height={height}
     />
   );
 }
