@@ -3,13 +3,13 @@ import GalleryItem from "../GalleryItem";
 import styles from "./Gallery.module.scss";
 
 export default function Gallery(props) {
-  const { images } = props;
+  const { items } = props;
   return (
     <div className={styles.gallery}>
       <h2 className={styles.gallery__title}>Gallery</h2>
       <ul className={styles.gallery__list}>
-        {images.map(image => (
-          <GalleryItem key={image.id} image={image} />
+        {items.map(item => (
+          <GalleryItem key={item.id} item={item} />
         ))}
       </ul>
     </div>

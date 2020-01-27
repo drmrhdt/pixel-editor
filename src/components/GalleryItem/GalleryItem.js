@@ -3,8 +3,11 @@ import Button from "../Button";
 import unicodeIcons from "../../styles/unicodeIcons";
 import styles from "./GalleryItem.module.scss";
 
-export default function GalleryItem(props) {
-  const { url, date, rating } = props.image;
+export default function GalleryItem({
+  item: { url },
+  item: { date },
+  item: { rating }
+}) {
   const fromTimestamp = new Date(date);
   const time = `${fromTimestamp.getHours()}:${
     fromTimestamp.getMinutes() < 10

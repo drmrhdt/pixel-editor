@@ -75,7 +75,7 @@ function App({ getCollection, uploadImageToStorageAndFirestore }) {
         </div>
         <Canvas setCanvasRef={setCanvasRef} />
       </div>
-      <Gallery images={items} />
+      <Gallery items={items} />
     </div>
   );
 }
