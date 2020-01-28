@@ -1,3 +1,4 @@
+import { findIndexById } from "../../utilities/filters";
 import {
   FETCH_COLLECTION_BEGIN,
   FETCH_COLLECTION_SUCCESS,
@@ -8,7 +9,8 @@ import {
   ADD_COLLECTION_ITEM_BEGIN,
   ADD_COLLECTION_ITEM_SUCCESS,
   ADD_COLLECTION_ITEM_FAILURE,
-  INCREASE_RATING
+  INCREASE_RATING,
+  DELETE_ITEM
 } from "../constants";
 
 const initialState = {
@@ -16,6 +18,8 @@ const initialState = {
   error: "",
   uploadedUrl: ""
 };
+
+let itemIndex;
 
 export const updateGalleryItemsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -60,11 +64,11 @@ export const updateGalleryItemsReducer = (state = initialState, action) => {
       };
     case INCREASE_RATING:
       const { id, rating } = action.payload;
-      const itemIndex = state.items.findIndex(item => item.id === id);
-      const item = state.items[itemIndex];
+      itemIndex = findIndexById(id, state.items);
+      const oldItem = state.items[itemIndex];
 
       const newItem = {
-        ...item,
+        ...oldItem,
         rating: rating
       };
 
@@ -73,6 +77,16 @@ export const updateGalleryItemsReducer = (state = initialState, action) => {
         items: [
           ...state.items.slice(0, itemIndex),
           newItem,
+          ...state.items.slice(itemIndex + 1)
+        ]
+      };
+    case DELETE_ITEM:
+      itemIndex = findIndexById(action.payload, state.items);
+
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, itemIndex),
           ...state.items.slice(itemIndex + 1)
         ]
       };

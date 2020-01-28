@@ -13,6 +13,7 @@ import {
   ADD_COLLECTION_ITEM_SUCCESS,
   ADD_COLLECTION_ITEM_FAILURE,
   INCREASE_RATING,
+  DELETE_ITEM
 } from "../constants";
 
 // const useThunkDispatch = () => {
@@ -110,5 +111,21 @@ export function increaseRating(payload) {
         console.error("Error updating document: ", error);
       });
     dispatch({ type: INCREASE_RATING, payload });
+  };
+}
+
+export function deleteItem(payload) {
+  return async dispatch => {
+    firestore
+      .collection("images")
+      .doc(payload)
+      .delete()
+      .then(function() {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function(error) {
+        console.error("Error removing document: ", error);
+      });
+    dispatch({ type: DELETE_ITEM, payload });
   };
 }

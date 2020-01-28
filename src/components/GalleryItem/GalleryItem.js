@@ -5,7 +5,10 @@ import {
   getTimeFromTimestamp,
   getDateFromTimestamp
 } from "../../utilities/parsers";
-import { increaseRating } from "../../store/actions/updateGalleryItems";
+import {
+  increaseRating,
+  deleteItem
+} from "../../store/actions/updateGalleryItems";
 import Button from "../Button";
 import UnicodeIcons from "../UnicodeIcons";
 import styles from "./GalleryItem.module.scss";
@@ -31,9 +34,9 @@ export default function GalleryItem({
     dispatch(increaseRating({ id, rating: rating + 1 }));
   };
 
-  const deleteItem = () => {
-
-  }
+  const deleteItemOnClick = () => {
+    dispatch(deleteItem(id));
+  };
 
   return (
     <div className={styles["gallery-item"]}>
@@ -49,15 +52,12 @@ export default function GalleryItem({
         </div>
         <div className={styles["gallery-item__buttons"]}>
           {rating}
-          <Button
-            className={styles["gallery-item__icon"]}
-            onClick={likeItem}
-          >
+          <Button className={styles["gallery-item__icon"]} onClick={likeItem}>
             <UnicodeIcons icon="filledHeart" />
           </Button>
           <Button
             className={styles["gallery-item__icon"]}
-            onClick={deleteItem}
+            onClick={deleteItemOnClick}
           >
             <UnicodeIcons icon="basket" />
           </Button>
