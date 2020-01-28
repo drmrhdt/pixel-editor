@@ -16,17 +16,11 @@ import {
   DELETE_ITEM
 } from "../constants";
 
-// const useThunkDispatch = () => {
-//   const dispatch = useDispatch();
-//   return dispatch;
-// };
-
 export const uploadImageToStorageAndFirestore = (
   imageName,
   url,
   collection
 ) => {
-  // const dispatch = useDispatch();
   return async dispatch => {
     const storageRef = storage.ref(`/${imageName}.png`);
     const uploadImageTask = storageRef.putString(url, "data_url");

@@ -13,22 +13,16 @@ import Button from "../Button";
 import UnicodeIcons from "../UnicodeIcons";
 import styles from "./GalleryItem.module.scss";
 
-const useThunkDispatch = () => {
-  const dispatch = useDispatch();
-  return dispatch;
-};
-
 export default function GalleryItem({
   item: { id },
   item: { url },
   item: { date },
   item: { rating }
 }) {
+  const dispatch = useDispatch();
   const fromTimestamp = new Date(date);
   const createdAtTime = getTimeFromTimestamp(fromTimestamp);
   const createdAtDate = getDateFromTimestamp(fromTimestamp);
-
-  const dispatch = useThunkDispatch();
 
   const likeItem = () => {
     dispatch(increaseRating({ id, rating: rating + 1 }));

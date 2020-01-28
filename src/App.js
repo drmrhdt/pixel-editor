@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useCanvasSize } from "./customHooks/useCanvasSize";
 import { useSelector, connect } from "react-redux";
 import {
@@ -13,10 +14,11 @@ import Gallery from "./components/Gallery";
 import downloadIcon from "./img/download.png";
 import styles from "./App.module.scss";
 
-function App({ getCollection, uploadImageToStorageAndFirestore }) {
+function App() {
   const [canvasRef, setCanvasRef] = useState(null);
   const [url, setUrl] = useState("#");
   const items = useSelector(state => sortByDateAsc(state.items.items));
+  const dispatch = useDispatch();
 
   const setUrlOnClick = () => {
     if (canvasRef) {
@@ -25,17 +27,19 @@ function App({ getCollection, uploadImageToStorageAndFirestore }) {
   };
 
   useEffect(() => {
-    getCollection("images");
-  }, [getCollection]);
+    dispatch(getCollection("images"));
+  }, [dispatch]);
 
   const uploadImageToStorage = () => {
     if (canvasRef) {
       setUrl(canvasRef.current.toDataURL("image/png"));
       const imageName = Math.floor(Math.random() * 10000000000);
-      uploadImageToStorageAndFirestore(
-        imageName,
-        canvasRef.current.toDataURL("image/png"),
-        "images"
+      dispatch(
+        uploadImageToStorageAndFirestore(
+          imageName,
+          canvasRef.current.toDataURL("image/png"),
+          "images"
+        )
       );
     }
   };
@@ -87,9 +91,4 @@ function App({ getCollection, uploadImageToStorageAndFirestore }) {
   );
 }
 
-const mapDispatchToProps = {
-  getCollection,
-  uploadImageToStorageAndFirestore
-};
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;

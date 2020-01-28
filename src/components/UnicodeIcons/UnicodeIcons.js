@@ -1,16 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function UnicodeIcons({ icon }) {
+function UnicodeIcons({ className, icon }) {
   switch (icon) {
     case "filledHeart":
-      return <span>&#127892;</span>;
+      return <span className={className}>&#127892;</span>;
     case "filledSquare":
-      return <span>&#9632;</span>;
+      return <span className={className}>&#9632;</span>;
     case "basket":
-      return <span>&#128465;</span>;
+      return <span className={className}>&#128465;</span>;
     default:
       return "no icon";
   }
 }
+
+UnicodeIcons.defaultProps = {
+  className: ""
+};
+
+UnicodeIcons.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.string.isRequired
+};
 
 export default UnicodeIcons;
