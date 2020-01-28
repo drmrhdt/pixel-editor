@@ -7,7 +7,8 @@ import {
   UPLOAD_IMAGE_FAILURE,
   ADD_COLLECTION_ITEM_BEGIN,
   ADD_COLLECTION_ITEM_SUCCESS,
-  ADD_COLLECTION_ITEM_FAILURE
+  ADD_COLLECTION_ITEM_FAILURE,
+  INCREASE_RATING
 } from "../constants";
 
 const initialState = {
@@ -56,6 +57,24 @@ export const updateGalleryItemsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload
+      };
+    case INCREASE_RATING:
+      const { id, rating } = action.payload;
+      const itemIndex = state.items.findIndex(item => item.id === id);
+      const item = state.items[itemIndex];
+
+      const newItem = {
+        ...item,
+        rating: rating
+      };
+
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, itemIndex),
+          newItem,
+          ...state.items.slice(itemIndex + 1)
+        ]
       };
     default:
       return state;

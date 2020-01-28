@@ -137,7 +137,7 @@ export default function Canvas({ setCanvasRef }) {
         const newMousePosition = getCoordinates(e);
         if (mousePosition && newMousePosition) {
           draw(mousePosition, newMousePosition);
-          // draw circle always on the new place
+          // draw circle always on the new place or not
           if (pattern === "bubbles") {
             setMousePosition(newMousePosition);
           }

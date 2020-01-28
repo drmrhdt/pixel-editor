@@ -1,3 +1,4 @@
+// import { useDispatch } from "react-redux";
 import "../../firebase/firebaseConfig";
 import { firestore, storage } from "../../firebase/firebaseConfig";
 import * as firebase from "firebase";
@@ -10,14 +11,21 @@ import {
   UPLOAD_IMAGE_FAILURE,
   ADD_COLLECTION_ITEM_BEGIN,
   ADD_COLLECTION_ITEM_SUCCESS,
-  ADD_COLLECTION_ITEM_FAILURE
+  ADD_COLLECTION_ITEM_FAILURE,
+  INCREASE_RATING,
 } from "../constants";
+
+// const useThunkDispatch = () => {
+//   const dispatch = useDispatch();
+//   return dispatch;
+// };
 
 export const uploadImageToStorageAndFirestore = (
   imageName,
   url,
   collection
 ) => {
+  // const dispatch = useDispatch();
   return async dispatch => {
     const storageRef = storage.ref(`/${imageName}.png`);
     const uploadImageTask = storageRef.putString(url, "data_url");
@@ -83,5 +91,24 @@ export function getCollection(collection) {
     } catch (error) {
       dispatch({ type: FETCH_COLLECTION_FAILURE, payload: error });
     }
+  };
+}
+
+export function increaseRating(payload) {
+  return async dispatch => {
+    firestore
+      .collection("images")
+      .doc(payload.id)
+      .update({
+        rating: payload.rating
+      })
+      .then(function() {
+        console.log("Document successfully updated!");
+      })
+      .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+    dispatch({ type: INCREASE_RATING, payload });
   };
 }
