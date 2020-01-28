@@ -1,4 +1,3 @@
-import { findIndexById } from "../../utilities/filters";
 import {
   FETCH_COLLECTION_BEGIN,
   FETCH_COLLECTION_SUCCESS,
@@ -21,6 +20,21 @@ const initialState = {
 
 let itemIndex;
 
+const updateItems = (items, item, itemIndex) => {
+  if (itemIndex === -1) {
+    return [...items, item];
+  }
+  if (!item) {
+    return [...items.slice(0, itemIndex), ...items.slice(itemIndex + 1)];
+  }
+  return [...items.slice(0, itemIndex), item, ...items.slice(itemIndex + 1)];
+};
+
+const findIndexById = (itemId, targetArray) => {
+  const itemIndex = targetArray.findIndex(item => item.id === itemId);
+  return itemIndex;
+};
+
 export const updateGalleryItemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_COLLECTION_BEGIN:
@@ -40,10 +54,7 @@ export const updateGalleryItemsReducer = (state = initialState, action) => {
         ...state
       };
     case ADD_COLLECTION_ITEM_SUCCESS:
-      return {
-        ...state,
-        items: [...state.items, action.payload]
-      };
+      return { items: updateItems(state.items, action.payload, -1) };
     case ADD_COLLECTION_ITEM_FAILURE:
       return {
         ...state
@@ -55,7 +66,7 @@ export const updateGalleryItemsReducer = (state = initialState, action) => {
     case UPLOAD_IMAGE_SUCCESS:
       return {
         ...state,
-        uploadedUrl: action.payload
+        uploadedUrl: action.payload // do I need it?
       };
     case UPLOAD_IMAGE_FAILURE:
       return {
@@ -66,30 +77,14 @@ export const updateGalleryItemsReducer = (state = initialState, action) => {
       const { id, rating } = action.payload;
       itemIndex = findIndexById(id, state.items);
       const oldItem = state.items[itemIndex];
-
       const newItem = {
         ...oldItem,
         rating: rating
       };
-
-      return {
-        ...state,
-        items: [
-          ...state.items.slice(0, itemIndex),
-          newItem,
-          ...state.items.slice(itemIndex + 1)
-        ]
-      };
+      return { items: updateItems(state.items, newItem, itemIndex) };
     case DELETE_ITEM:
       itemIndex = findIndexById(action.payload, state.items);
-
-      return {
-        ...state,
-        items: [
-          ...state.items.slice(0, itemIndex),
-          ...state.items.slice(itemIndex + 1)
-        ]
-      };
+      return { items: updateItems(state.items, null, itemIndex) };
     default:
       return state;
   }
