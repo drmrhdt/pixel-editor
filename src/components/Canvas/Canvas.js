@@ -30,7 +30,7 @@ export default function Canvas({ setCanvasRef }) {
     size: state.selectSize.toolSize,
     figure: state.selectFigure.figure,
     pattern: state.selectPattern.pattern,
-    opacity: state => state.selectOpacity.opacity
+    opacity: state.selectOpacity.opacity
   }));
 
   // TO-DO add these instruments

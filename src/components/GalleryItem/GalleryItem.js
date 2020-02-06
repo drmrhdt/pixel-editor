@@ -49,6 +49,9 @@ export default function GalleryItem({
           <Button className={styles["gallery-item__icon"]} onClick={likeItem}>
             <UnicodeIcons icon="filledHeart" />
           </Button>
+          <Button className={styles["gallery-item__icon"]} onClick={() => {}}>
+            <UnicodeIcons icon="comments" />
+          </Button>
           <Button
             className={styles["gallery-item__icon"]}
             onClick={deleteItemOnClick}

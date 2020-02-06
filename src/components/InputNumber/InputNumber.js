@@ -51,7 +51,7 @@ InputNumber.defaultProps = {
 
 InputNumber.propTypes = {
   className: PropTypes.string,
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   min: PropTypes.string,
   max: PropTypes.string,
