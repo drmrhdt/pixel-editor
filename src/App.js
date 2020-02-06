@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useCanvasSize } from "./customHooks/useCanvasSize";
-import { useSelector, connect } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   getCollection,
   uploadImageToStorageAndFirestore
