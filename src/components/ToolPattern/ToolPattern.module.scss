@@ -3,7 +3,7 @@ $items: bubbles, nested;
 
 @each $item in $items {
   .radio-button__label_type_#{$item} {
-    background: url("../../img/#{$item}.svg") no-repeat center;
+    background: url("../../img/#{$item}.png") no-repeat center;
     background-size: $tool-bg-size;
   }
 }
