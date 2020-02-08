@@ -1,4 +1,8 @@
-import { SELECT_BUBBLES_PATTERN, SELECT_NESTED_PATTERN } from "../constants";
+import {
+  SELECT_BUBBLES_PATTERN,
+  SELECT_NESTED_PATTERN,
+  SELECT_NO_PATTERN
+} from "../constants";
 
 const initialState = {
   pattern: "bubbles"
@@ -15,6 +19,11 @@ export const selectPatternReducer = (state = initialState, action) => {
       return {
         ...state,
         pattern: "nested"
+      };
+    case SELECT_NO_PATTERN:
+      return {
+        ...state,
+        pattern: "noPattern"
       };
     default:
       return state;

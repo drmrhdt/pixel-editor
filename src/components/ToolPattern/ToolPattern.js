@@ -17,6 +17,13 @@ export default function ToolPattern({ className }) {
     <div className={className}>
       <h3>Pattern</h3>
       <RadioButton
+        className={styles["radio-button__label_type_no"]}
+        item="noPattern"
+        name="pattern"
+        selectedItem={pattern}
+        onClick={pickPattern}
+      />
+      <RadioButton
         className={styles["radio-button__label_type_bubbles"]}
         item="bubbles"
         name="pattern"

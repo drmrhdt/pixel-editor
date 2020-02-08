@@ -8,7 +8,8 @@ export default function RadioButton({
   name,
   selectedItem,
   onClick,
-  className
+  className,
+  children
 }) {
   return (
     <label
@@ -22,6 +23,7 @@ export default function RadioButton({
       onClick={onClick}
       data-label={item}
     >
+      {children}
       <input
         className={styles["radio-button__input"]}
         type="radio"
@@ -32,11 +34,13 @@ export default function RadioButton({
 }
 
 RadioButton.defaultProps = {
-  className: ""
+  className: "",
+  children: ""
 };
 
 RadioButton.propTypes = {
   className: PropTypes.string,
+  children: PropTypes.string,
   item: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   selectedItem: PropTypes.string.isRequired,

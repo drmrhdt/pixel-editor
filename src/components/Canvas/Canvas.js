@@ -88,7 +88,9 @@ export default function Canvas({ setCanvasRef, style }) {
 
       if (context) {
         // TO-DO buttons DO/UNDO
-        context.clearRect(0, 0, canvas.width, canvas.height); // clearing before draw drawing
+        if (pattern === "noPattern") {
+          context.clearRect(0, 0, canvas.width, canvas.height); // clearing before draw drawing
+        }
 
         switch (figure) {
           case "circle":
@@ -112,6 +114,7 @@ export default function Canvas({ setCanvasRef, style }) {
       figure,
       fillStyle,
       opacity,
+      pattern,
       shadowBlur,
       shadowColor,
       shadowOffsetX,
