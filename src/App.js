@@ -48,8 +48,15 @@ function App() {
 
   // TO-DO don't keep it here!
   const cleanCanvas = () => {
+    setLayers([]);
     const canvas = canvasRef.current.getContext("2d");
     canvas.clearRect(0, 0, width, height);
+  };
+
+  const [layers, setLayers] = useState([]);
+
+  const addLayers = () => {
+    setLayers([...layers, { zIndex: layers.length }]);
   };
 
   return (
@@ -84,7 +91,15 @@ function App() {
             </Button>
           </div>
         </div>
-        <Canvas setCanvasRef={setCanvasRef} />
+        <div className={styles["app__canvas-container"]} onClick={addLayers}>
+          {layers.map(layer => (
+            <Canvas
+              setCanvasRef={setCanvasRef}
+              style={{ zIndex: layer.zIndex }}
+              key={layer.zIndex}
+            />
+          ))}
+        </div>
       </div>
       <Gallery items={items} />
     </div>

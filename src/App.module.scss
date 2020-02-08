@@ -19,7 +19,7 @@
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
-    width: 100%;
+    width: 15%;
     padding: 10px 0 10px 10px;
   }
 
@@ -57,6 +57,15 @@
     vertical-align: middle;
     color: $black;
     text-decoration: none;
+  }
+
+  &__canvas-container {
+    position: relative;
+
+    width: 85%;
+    height: 100vh;
+
+    background-color: $white;
   }
 }
 

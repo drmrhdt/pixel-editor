@@ -10,7 +10,7 @@ import {
 } from "../../utilities/drawFigures";
 import styles from "./Canvas.module.scss";
 
-export default function Canvas({ setCanvasRef }) {
+export default function Canvas({ setCanvasRef, style }) {
   const [width, height] = useCanvasSize();
 
   const {
@@ -46,15 +46,7 @@ export default function Canvas({ setCanvasRef }) {
   // context.fillRect(0, 0, canvas.width, canvas.height);
   // context.fill();
 
-  const startPaint = useCallback(e => {
-    const coordinates = getCoordinates(e);
-    if (coordinates) {
-      setIsPainting(true);
-      setMousePosition(coordinates);
-    }
-  }, []);
-
-  const getCoordinates = e => {
+  const getCoordinates = useCallback(e => {
     if (!canvasRef.current) {
       return;
     }
@@ -64,7 +56,18 @@ export default function Canvas({ setCanvasRef }) {
     const y = e.pageY - canvas.offsetTop;
 
     return { x, y };
-  };
+  }, []);
+
+  const startPaint = useCallback(
+    e => {
+      const coordinates = getCoordinates(e);
+      if (coordinates) {
+        setIsPainting(true);
+        setMousePosition(coordinates);
+      }
+    },
+    [getCoordinates]
+  );
 
   const draw = useCallback(
     (originalMousePosition, newMousePosition) => {
@@ -85,7 +88,7 @@ export default function Canvas({ setCanvasRef }) {
 
       if (context) {
         // TO-DO buttons DO/UNDO
-        // context.clearRect(0, 0, canvas.width, canvas.height); // clearing before draw drawing
+        context.clearRect(0, 0, canvas.width, canvas.height); // clearing before draw drawing
 
         switch (figure) {
           case "circle":
@@ -144,7 +147,7 @@ export default function Canvas({ setCanvasRef }) {
         }
       }
     },
-    [isPainting, mousePosition, draw, pattern]
+    [isPainting, getCoordinates, mousePosition, draw, pattern]
   );
 
   useEffect(() => {
@@ -177,19 +180,21 @@ export default function Canvas({ setCanvasRef }) {
 
   return (
     <canvas
-      id="canvas"
       className={styles.canvas}
       ref={canvasRef}
       width={width}
       height={height}
+      style={style}
     />
   );
 }
 
 Canvas.defaultProps = {
-  setCanvasRef: () => {}
+  setCanvasRef: () => {},
+  style: ""
 };
 
 Canvas.propTypes = {
-  setCanvasRef: PropTypes.func
+  setCanvasRef: PropTypes.func,
+  style: PropTypes.string
 };

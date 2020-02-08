@@ -2,13 +2,13 @@ import { useState, useLayoutEffect } from "react";
 
 export function useCanvasSize() {
   const [canvasSize, setCanvasSize] = useState([
-    document.documentElement.clientWidth - 220,
+    document.documentElement.clientWidth - 230,
     document.documentElement.clientHeight
   ]);
   useLayoutEffect(() => {
     const updateSize = () => {
       setCanvasSize([
-        document.documentElement.clientWidth - 220,
+        document.documentElement.clientWidth - 230,
         document.documentElement.clientHeight
       ]);
     };
