@@ -4,7 +4,7 @@ import { useCanvasSize } from "./customHooks/useCanvasSize";
 import { useSelector } from "react-redux";
 import {
   getCollection,
-  uploadImageToStorageAndFirestore
+  uploadImageToStorageAndFirestore,
 } from "./store/actions/updateGalleryItems";
 import { sortByDateAsc } from "./utilities/sorting";
 import Canvas from "./components/Canvas";
@@ -17,52 +17,82 @@ import styles from "./App.module.scss";
 function App() {
   const [canvasRef, setCanvasRef] = useState(null);
   const [url, setUrl] = useState("#");
-  const items = useSelector(state => sortByDateAsc(state.items.items));
+  const [prevLayersLength, setprevLayersLength] = useState(0);
+  const [width, height] = useCanvasSize();
+  const [layers, setLayers] = useState([{ zIndex: 0, canvasRef }]);
+  const items = useSelector((state) => sortByDateAsc(state.items.items));
   const dispatch = useDispatch();
 
-  const setUrlOnClick = () => {
-    if (canvasRef) {
-      setUrl(canvasRef.current.toDataURL("image/png"));
+  const joinLayersIntoOne = () => {
+    const curLayersLength = layers.length;
+    console.log(
+      `${curLayersLength} ${prevLayersLength} curLayersLength prevLayersLength`
+    );
+
+    const bottomLayer = layers[0];
+    const baseCanvas = bottomLayer.canvasRef.current;
+    const baseContext = bottomLayer.canvasRef.current.getContext("2d");
+
+    if (prevLayersLength !== 0 || curLayersLength !== prevLayersLength) {
+      layers.forEach((layer, id) => {
+        if (id !== 0) {
+          baseContext.drawImage(
+            layer.canvasRef.current,
+            0,
+            0,
+            baseCanvas.width,
+            baseCanvas.height
+          );
+        }
+      });
     }
+    setprevLayersLength(curLayersLength);
+
+    return baseCanvas;
+  };
+
+  const setUrlOnClick = () => {
+    const canvasRef = joinLayersIntoOne();
+    const imageBase64 = canvasRef.toDataURL("image/png");
+
+    setUrl(imageBase64);
+
+    return imageBase64;
   };
 
   useEffect(() => {
     dispatch(getCollection("images"));
   }, [dispatch]);
 
-  const uploadImageToStorage = () => {
-    if (canvasRef) {
-      setUrl(canvasRef.current.toDataURL("image/png"));
-      const imageName = Math.floor(Math.random() * 10000000000);
-      dispatch(
-        uploadImageToStorageAndFirestore(
-          imageName,
-          canvasRef.current.toDataURL("image/png"),
-          "images"
-        )
-      );
-    }
+  const generateRandomNumber = () => {
+    return Math.floor(Math.random() * 10000000000);
   };
 
-  const [width, height] = useCanvasSize();
+  const uploadImageToStorage = () => {
+    const imageBase64 = setUrlOnClick();
+    const imageName = generateRandomNumber();
+
+    dispatch(
+      uploadImageToStorageAndFirestore(imageName, imageBase64, "images")
+    );
+  };
 
   // TO-DO don't keep it here!
   const cleanCanvas = () => {
     setLayers([]);
-    const canvas = canvasRef.current.getContext("2d");
-    canvas.clearRect(0, 0, width, height);
   };
 
-  const [layers, setLayers] = useState([]);
-
-  const addLayers = () => {
-    setLayers([...layers, { zIndex: layers.length }]);
+  const addLayer = () => {
+    setLayers((layers) => [
+      ...layers,
+      { zIndex: layers.length, canvasRef: canvasRef },
+    ]);
   };
 
   return (
     <div className={styles.temp}>
       <div className={styles.app}>
-        <div className={styles.app__sidebar}>
+        <section className={styles.app__sidebar}>
           <h1 className={styles.app__logo}>Zen Drawing App</h1>
           <Toolbox className={styles.app__toolbox} />
           <div className={styles["app__buttons-group"]}>
@@ -90,16 +120,25 @@ function App() {
               </a>
             </Button>
           </div>
-        </div>
-        <div className={styles["app__canvas-container"]} onClick={addLayers}>
-          {layers.map(layer => (
-            <Canvas
-              setCanvasRef={setCanvasRef}
-              style={{ zIndex: layer.zIndex }}
-              key={layer.zIndex}
-            />
-          ))}
-        </div>
+        </section>
+        <section
+          className={styles["app__canvas-container"]}
+          onClick={addLayer}
+          style={{ width: width, height: height }}
+        >
+          <div className={styles["app__canvas-bg-wrapper"]}>
+            {layers.map((layer) => (
+              <Canvas
+                setLayers={setLayers}
+                layers={layers}
+                setCanvasRef={setCanvasRef}
+                style={{ zIndex: layer.zIndex }}
+                key={layer.zIndex}
+              />
+            ))}
+          </div>
+        </section>
+        {/* TO-DO right sidebar with tools <section>right sidebar</section> */}
       </div>
       <Gallery items={items} />
     </div>
