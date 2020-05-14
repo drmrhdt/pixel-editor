@@ -6,11 +6,11 @@ import {
   drawCircle,
   drawLine,
   drawRectangle,
-  drawSquare
+  drawSquare,
 } from "../../utilities/drawFigures";
 import styles from "./Canvas.module.scss";
 
-export default function Canvas({ setCanvasRef, style }) {
+export default function Canvas({ setLayers, layers, setCanvasRef, style }) {
   const [width, height] = useCanvasSize();
 
   const {
@@ -23,14 +23,14 @@ export default function Canvas({ setCanvasRef, style }) {
     size,
     figure,
     pattern,
-    opacity
-  } = useSelector(state => ({
+    opacity,
+  } = useSelector((state) => ({
     color: state.colorSelect,
     shadow: state.selectShadowParameter,
     size: state.selectSize.toolSize,
     figure: state.selectFigure.figure,
     pattern: state.selectPattern.pattern,
-    opacity: state.selectOpacity.opacity
+    opacity: state.selectOpacity.opacity,
   }));
 
   // TO-DO add these instruments
@@ -41,12 +41,18 @@ export default function Canvas({ setCanvasRef, style }) {
   const [mousePosition, setMousePosition] = useState(undefined);
   const canvasRef = useRef(null);
 
+  if (canvasRef.current) {
+    setCanvasRef(canvasRef);
+    const lastCanvas = layers[layers.length - 1];
+    lastCanvas.canvasRef = canvasRef;
+  }
+
   // TO-DO make canvas background-color WHITE
   // context.fillStyle = "#ffffff";
   // context.fillRect(0, 0, canvas.width, canvas.height);
   // context.fill();
 
-  const getCoordinates = useCallback(e => {
+  const getCoordinates = useCallback((e) => {
     if (!canvasRef.current) {
       return;
     }
@@ -59,7 +65,7 @@ export default function Canvas({ setCanvasRef, style }) {
   }, []);
 
   const startPaint = useCallback(
-    e => {
+    (e) => {
       const coordinates = getCoordinates(e);
       if (coordinates) {
         setIsPainting(true);
@@ -120,7 +126,7 @@ export default function Canvas({ setCanvasRef, style }) {
       shadowOffsetX,
       shadowOffsetY,
       size,
-      strokeStyle
+      strokeStyle,
     ]
   );
 
@@ -128,17 +134,16 @@ export default function Canvas({ setCanvasRef, style }) {
     if (!canvasRef.current) {
       return;
     }
-    setCanvasRef(canvasRef);
 
     const canvas = canvasRef.current;
     canvas.addEventListener("mousedown", startPaint);
     return () => {
       canvas.removeEventListener("mousedown", startPaint);
     };
-  }, [setCanvasRef, startPaint]);
+  }, [startPaint]);
 
   const paint = useCallback(
-    e => {
+    (e) => {
       if (isPainting) {
         const newMousePosition = getCoordinates(e);
         if (mousePosition && newMousePosition) {
@@ -164,7 +169,7 @@ export default function Canvas({ setCanvasRef, style }) {
     };
   }, [paint]);
 
-  const stopPaint = useCallback(e => {
+  const stopPaint = useCallback((e) => {
     setIsPainting(false);
   }, []);
 
@@ -194,10 +199,10 @@ export default function Canvas({ setCanvasRef, style }) {
 
 Canvas.defaultProps = {
   setCanvasRef: () => {},
-  style: ""
+  style: {},
 };
 
 Canvas.propTypes = {
   setCanvasRef: PropTypes.func,
-  style: PropTypes.string
+  style: PropTypes.object,
 };
